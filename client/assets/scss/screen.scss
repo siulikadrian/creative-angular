@@ -1,0 +1,61 @@
+
+@import "compass";
+@import "compass/reset";
+
+
+@import  "social/*.png";
+@include all-social-sprites;
+
+@font-face {
+  font-family: "Cantarell-Regular-webfont";
+  src: url("../_assets/archivoblack-regular-webfont.eot");
+  src: local("☺"),
+    url("../_assets/Cantarell-Regular-webfont.woff") format("woff"),
+    url("../_assets/Cantarell-Regular-webfont.otf") format("opentype"),
+    url("../_assets/Cantarell-Regular-webfont.svg#filename") format("svg");
+}
+
+html{
+	height: 100%;
+}
+
+body{
+
+	min-width: 100%;
+	background: #fff;
+	border-top: 20px solid #000;
+
+}
+
+.content-wrapper {
+
+}
+
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1170px;
+}
+
+.clearBorder{
+	clear: both;
+	border-bottom: 5px solid #000;
+
+}
+
+
+@import "animation.scss";
+@import "modules/header.scss";
+@import "modules/main_content.scss";
+@import "modules/how_work_content.scss";
+@import "modules/modal.scss";
+@import "modules/footer.scss"; 
+
+
+
+body {
+
+	background: blue;
+
+}
+ 

@@ -1,0 +1,176 @@
+.how-work-content{
+
+	.animation {
+		width: 1100px;
+		margin: 30px auto;
+		position: relative;
+
+		.current-info{
+			position: absolute;
+			top: 85px;
+			left: 457px;
+			color: #000;
+			font-family: "Cantarell-Regular-webfont";
+			font-size: 16px;
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: -1px;
+		}
+
+		
+
+		.diagram-icon{
+			position: absolute;
+			border-radius: 50px;
+			border: solid 4px #000;
+			background-color: #fff;
+			width: 53px;
+			height: 53px;
+			text-align: center;
+			line-height: 55px;
+			color: #4183c4;
+
+			&.diagram-icon-sm{
+				width: 25px;
+				height: 25px;
+				border: 2px solid #000;
+				top: 85px;
+
+				&.a{
+					left: 165px;
+				}
+				&.b{
+					left: 295px;
+				}
+				&.c{
+					left: 765px;
+				}
+				&.d{
+					left: 890px;
+				}
+
+			}
+
+			p{
+				padding: 0 15px;
+				line-height: 18px;
+				text-align: left;
+				margin-bottom: 10px;
+				font-family: "Cantarell-Regular-webfont";
+			}
+
+			h2{
+				font-family: "Cantarell-Regular-webfont";
+				font-size: 14px;
+				font-weight: bold;
+			}
+
+			&.diagram-first {
+				top: 15px;
+				left: 52px;
+
+				-webkit-animation: diagram-icon 1s 2s;
+				-moz-animation: diagram-icon  1s 2s ; 
+				-o-animation: diagram-icon  1s 2s; 
+				animation: diagram-icon  1s 2s; 
+
+				&.info{
+					transition:background 0.5s;
+					background: #000;
+				}
+
+				.diagram-first-info{
+					position: absolute;
+					top: 100px;
+					width: 250px;
+					left: -100px;
+					color: #000;
+					border: 1px dashed #000;
+				}
+			}
+			&.diagram-second {
+				top: 15px;
+				left: 390px;
+
+				-webkit-animation: diagram-icon 1s 2.5s forwards;
+				-moz-animation: diagram-icon  1s 2.5s ; 
+				-o-animation: diagram-icon  1s 2.5s; 
+				animation: diagram-icon  1s 2.5s;
+
+				&.info{
+					transition:background 0.5s;
+					background: #000;
+				}
+
+				.diagram-second-info{
+					position: absolute;
+					top: 100px;
+					width: 250px;
+					left: -100px;
+					color: #000;
+					border: 1px dashed #000;
+				} 
+			}
+			&.diagram-third {
+				top: 15px;
+				left: 647px;
+				-webkit-animation: diagram-icon 1s 3s forwards;
+				-moz-animation: diagram-icon  1s 3s ; 
+				-o-animation: diagram-icon  1s 3s; 
+				animation: diagram-icon  1s 3s;
+
+				&.info{
+					transition:background 0.5s;
+					background: #000;
+				} 
+
+				.diagram-third-info{
+					position: absolute;
+					top: 100px;
+					width: 250px;
+					left: -100px;
+					color: #000;
+					border: 1px dashed #000;
+				}
+			}
+			&.diagram-fourth {
+				top: 15px;
+				left: 986px;
+				-webkit-animation: diagram-icon 1s 3.5s forwards;
+				-moz-animation: diagram-icon  1s 3.5s ; 
+				-o-animation: diagram-icon  1s 3.5s; 
+				animation: diagram-icon  1s 3.5s; 
+
+				&.info{
+					transition:background 0.5s;
+					background: #000;
+				}
+
+				.diagram-fourth-info{
+					position: absolute;
+					top: 100px;
+					width: 250px;
+					left: -100px;
+					color: #000;
+					border: 1px dashed #000;
+				}
+			}
+		}
+		.show-all{
+			position: relative;
+			bottom: 135px;
+			left: 55px;
+			text-align: center;
+
+			a{
+				background: #000;
+				color: #fff;
+				font-family: "Cantarell-Regular-webfont";
+				font-size: 12px;
+				text-transform: uppercase;
+				text-decoration: none;
+				padding: 4px;
+			}
+		}	
+	}
+}
