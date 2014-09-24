@@ -9,7 +9,7 @@ angular.module('creativeRecruitmentApp', [
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/about'
       });
 
     $locationProvider.html5Mode(true);
