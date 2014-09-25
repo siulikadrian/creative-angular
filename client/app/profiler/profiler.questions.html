@@ -1,0 +1,64 @@
+
+<div class="questions">
+
+	<h1 class="profiler-header text-center">PROFILER</h1>
+
+	<div class="timer">
+
+		<h3 class="text-center">
+			<timer interval="1000">{{minutes}} minutes, {{seconds}} seconds.</timer>
+		</h3>
+
+	</div>
+
+
+	<div class="questions-wrapper">
+		<ul>
+			<li class="question question-{{$index}}">
+
+				<div class="question-name">
+
+					{{currentQuestion.question}}
+
+				</div>
+				<div class="clearfix"></div>
+				<div class="question-answers">
+
+					<div class="single-question-wrap">
+						<input id="answer-0-{{$index}}" ng-model="currentQuestion.answer" value="0" type="radio">
+	            		<label for="answer-0-{{$index}}"  class="radio-label">{{currentQuestion.choices[0]}}</label>
+					</div>
+					<div class="single-question-wrap">
+						<input id="answer-1-{{$index}}" ng-model="currentQuestion.answer" value="1" type="radio">
+	            		<label for="answer-1-{{$index}}"  class="radio-label">{{currentQuestion.choices[1]}}</label>
+            		</div>
+					<div class="single-question-wrap">
+						<input id="answer-2-{{$index}}" ng-model="currentQuestion.answer" value="2" type="radio">
+	            		<label for="answer-2-{{$index}}"  class="radio-label">{{currentQuestion.choices[2]}}</label>
+            		</div>
+					<div class="single-question-wrap">
+						<input id="answer-3-{{$index}}" ng-model="currentQuestion.answer" value="3" type="radio">
+	            		<label for="answer-3-{{$index}}"  class="radio-label">{{currentQuestion.choices[3]}}</label>
+            		</div>
+
+				</div>
+
+			</li>
+		</ul>
+	</div>
+
+	<button ng-hide="hideNext" ng-click="nextQuestion()" class="button-cr">
+		<span class="hover-bg">
+			<span class="hover-text">Następne pytanie</span>
+		</span>
+		Następne pytanie
+	</button>
+
+	<button ng-show="hideNext" ng-click="sendProfilerQuestions()" class="button-cr">
+		<span class="hover-bg">
+			<span class="hover-text">Zakończ test</span>
+		</span>
+		Zakończ test
+	</button>
+
+</div>

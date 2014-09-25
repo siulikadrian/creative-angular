@@ -1,0 +1,97 @@
+{
+    "name": "Profiler Profestional Test",
+
+    "questions" : [
+        {
+            "question" : "Which is not an advantage of using a closure?",
+            "choices"  : [
+                "Nie",
+                "Troche",
+                "Średnio",
+                "bardzo"
+            ],
+            "answer"   : ""
+        },
+        {
+            "question" : "To create a columned list of two-line email subjects and dates for a master-detail view, which are the most semantically correct?",
+            "choices"  : [
+                "Nie",
+                "Troche",
+                "Średnio",
+                "bardzo"
+            ],
+            "answer"   : ""
+        },
+        {
+            "question" : "To pass an array of strings to a function, you should not use...",
+            "choices"  : [
+                "Nie",
+                "Troche",
+                "Średnio",
+                "bardzo"
+            ],
+            "answer"   : ""
+        },
+        {
+            "question" : "____ and ____ would be the HTML tags you would use to display a menu item and its description.",
+            "choices"  : [
+                "Nie",
+                "Troche",
+                "Średnio",
+                "bardzo"
+            ],
+            "answer"   : ""
+        },
+        {
+            "question" : "Given <div id='outer'><div class='inner'></div></div>, which of these two is the most performant way to select the inner div ?",
+            "choices"  : [
+                "Nie",
+                "Troche",
+                "Średnio",
+                "bardzo"
+            ],
+            "answer"   : ""
+        },
+        {
+            "question" : "Given this:",
+            "details"  : "<img src='./assets/data/images/q1_1.jpg' /><p>Which message will be returned by injecting this service and executing 'myService.getMessage()'?</p>",
+            "choices"  : [
+                "Nie",
+                "Troche",
+                "Średnio",
+                "bardzo"
+            ],
+            "answer"   : ""
+        },
+        {
+            "question" : "When using Jasmine for TDD, what would you use to determine if an event handler was called:",
+            "choices"  : [
+                "Nie",
+                "Troche",
+                "Średnio",
+                "bardzo"
+            ],
+            "answer"   : ""
+        },
+        {
+            "question" : "In AngularJS, when do you need to use $scope.apply()? Which is the best answer:",
+            "choices"  : [
+                "Nie",
+                "Troche",
+                "Średnio",
+                "bardzo"
+            ],
+            "answer"   : ""
+        },
+        {
+            "question" : "In AngularJS, where should DOM manipulation occur ?",
+            "choices"  : [
+                "Nie",
+                "Troche",
+                "Średnio",
+                "bardzo"
+            ],
+            "answer"   : ""
+        }
+    ]
+}

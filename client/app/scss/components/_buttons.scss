@@ -1,0 +1,63 @@
+.button-cr {
+
+	@extend %custom-button;
+
+	display: block;
+
+	background: white;
+
+	position: relative;
+
+	color: black;
+
+	height: 45px;
+
+	overflow: hidden;
+
+	margin: 15px auto;
+	
+	.hover-bg {
+
+		-webkit-transition: left .5s; /* For Safari 3.1 to 6.0 */
+	    transition: left .5s;
+
+		position: absolute;
+		background: black;
+		left: -110%;
+
+		top: -1px;
+		height: 45px;
+		width: 100%;
+
+		.hover-text{
+
+			color: white;
+			line-height: 45px;
+
+		}
+
+	}
+
+	&:hover {
+
+		.hover-bg {
+
+			left: 0;
+
+		}
+
+	}
+
+}
+
+%custom-button {
+	
+	font-size: 16px;
+	padding: 10px 20px;
+	background: white;
+	border: 2px solid black;
+
+	outline: none;
+	box-shadow: none;
+
+}
