@@ -1,11 +1,15 @@
+.custom-ratio {
+	
+	@extend %custom_ratio;
+
+}
 
 %custom_ratio {
 	label {  
 	    display: block;  
 	    cursor: pointer;  
 	    position: relative;  
-	    padding-left: 100px;  
-	    margin-right: 15px;  
+	    padding: 0 40px;
 	    font-size: 13px;  
 	}  
 
@@ -26,6 +30,7 @@
 	    margin-right: 10px;  
 	    position: absolute;  
 	    left: 50%;
+	    margin-left: -50px;
 	    top: 25px;  
 
 	    -webkit-transition: background .5s;

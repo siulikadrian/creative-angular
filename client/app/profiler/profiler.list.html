@@ -1,0 +1,94 @@
+<div class="container" ng-init="fetchData()">
+
+	<div class="row">
+
+		<div class="col-xs-3">
+			
+			<div class="admin-profiler-controll-wrapper">
+
+				<div class="search-list-wrapper">
+					<div class="form-group input-cr">
+						<input placeholder="Wyszukaj" type="text" class="form-control" ng-model="search" value="">
+					</div>
+				</div>
+
+				<div class="add-button-wrapper">
+					<button class="button-cr" ng-click="addUser()">
+						<span class="hover-bg">
+							<span class="hover-text">
+								Dodaj Użytkownika
+							</span>
+						</span>
+						Dodaj Użytkownika
+					</button>
+				</div>
+
+				<div class="add-button-wrapper">
+
+					<button class="button-cr" ng-click="addCompany()">
+						<span class="hover-bg">
+							<span class="hover-text">
+								Dodaj Firmę
+							</span>
+						</span>
+						Dodaj Firmę
+					</button>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="col-xs-9">
+
+			<div class="list-wrapper">
+
+				<div class="profiler-list-header">
+
+					<div class="row">
+
+						<div class="col-xs-2">
+							Imię
+						</div>
+
+						<div class="col-xs-2">
+							Nazwisko
+						</div>
+
+						<div class="col-xs-5">
+							Branża
+						</div>
+
+						<div class="col-xs-3">
+							Staż pracy
+						</div>
+
+					</div>
+
+				</div>
+				<ul class="list-items">
+					<a href="/profiler/user/{{item._id}}" class="list-item" ng-repeat="item in items | filter: search">
+						<div class="row">
+							<li>
+								<div class="col-xs-2 name">
+									{{item.user[0].firstName}}
+								</div>
+								<div class="col-xs-2 name">
+									{{item.user[0].surnameName}}
+								</div>
+
+								<div class="col-xs-5">
+									{{item.user[0].jobArea}}
+								</div>
+								<div class="col-xs-3">
+									{{item.user[0].actualWrokYear}}/{{item.user[0].wrokYear}}
+								</div>
+							</li>
+						</div>
+					</a>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

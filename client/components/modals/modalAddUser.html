@@ -1,0 +1,43 @@
+<div class="modal-wrapper">
+
+	<div class="modal-body">
+		<div class="modal_information">
+				
+			<div class="modal-information-header text-center">
+		        Dodaj Użytkownika
+			</div>
+
+		    <div class="modal-information-content text-center">
+		    	<form name="form">
+			    	<div class="form-group input-cr">	
+						<div>
+							<input placeholder="Email" type="email" class="form-control" ng-model="newUser.email" required>
+						</div>
+						<div>
+							<input placeholder="Imię" type="text" class="form-control" ng-model="newUser.firstName" required>
+						</div>
+						<div>
+							<input placeholder="Nazwisko" type="text" class="form-control" ng-model="newUser.surname" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<select class="form-control">
+						  <option value="Company 1">Company 1</option>
+						  <option value="Company 2">Company 2</option>
+						  <option value="Company 3">Company 3</option>
+						  <option value="Company 4">Company 4</option>
+						</select>
+					</div>
+		    	</form>
+			</div>
+			<button class="button-cr" ng-click="addNewUser()" ng-disabled="form.$invalid">
+				<span class="hover-bg">
+					<span class="hover-text">
+						Dodaj
+					</span>
+				</span>
+				Dodaj
+			</button>
+		</div>
+	</div>
+</div>

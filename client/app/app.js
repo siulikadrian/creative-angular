@@ -4,7 +4,10 @@ angular.module('creativeRecruitmentApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.bootstrap',
+  'ui.bootstrap.tpls',
+  'ui.bootstrap.transition'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

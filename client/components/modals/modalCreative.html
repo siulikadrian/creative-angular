@@ -1,0 +1,22 @@
+<div class="modal-wrapper">
+
+	<div class="modal-body">
+		<div class="modal_information">
+				
+			<div class="modal-information-header text-center">
+		                {{head}}
+			</div>
+
+		    <div class="modal-information-content text-center">
+		    	{{msg}}
+			</div>
+
+		</div>
+		<button ng-if="showBtn" class="button-cr" ng-click="goToNextQuestionNoAnswer()">
+			<span class="hover-bg">
+				<span class="hover-text">Następne pytanie</span>
+			</span>
+			Następne pytanie
+		</button>
+	</div>
+</div>

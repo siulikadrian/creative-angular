@@ -3,93 +3,266 @@
 
     "questions" : [
         {
-            "question" : "Which is not an advantage of using a closure?",
+            "id": 0,
+            "question" : "Często zdarza się, że zgadzam się na coś tylko dlatego, że nie potrafię odmówić.",
             "choices"  : [
-                "Nie",
-                "Troche",
-                "Średnio",
-                "bardzo"
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
             ],
             "answer"   : ""
         },
         {
-            "question" : "To create a columned list of two-line email subjects and dates for a master-detail view, which are the most semantically correct?",
+            "id": 1,
+            "question" : "Wierzę, że nawet gdy coś pójdzie nie tak, to dam sobie radę w życiu.",
             "choices"  : [
-                "Nie",
-                "Troche",
-                "Średnio",
-                "bardzo"
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
             ],
             "answer"   : ""
         },
         {
-            "question" : "To pass an array of strings to a function, you should not use...",
+            "id": 2,
+            "question" : "Kiedy ktoś inny próbuje narzucić mi swoje zdanie z reguły sprzeciwiam się temu z całą stanowczością.",
             "choices"  : [
-                "Nie",
-                "Troche",
-                "Średnio",
-                "bardzo"
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
             ],
             "answer"   : ""
         },
         {
-            "question" : "____ and ____ would be the HTML tags you would use to display a menu item and its description.",
+            "id": 3,
+            "question" : "Szybko zauważam, gdy ktoś w moim otoczeniu jest smutny lub przygnębiony.",
             "choices"  : [
-                "Nie",
-                "Troche",
-                "Średnio",
-                "bardzo"
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
             ],
             "answer"   : ""
         },
         {
-            "question" : "Given <div id='outer'><div class='inner'></div></div>, which of these two is the most performant way to select the inner div ?",
+            "id": 4,
+            "question" : "Lubię uczyć się nowych rzeczy.",
             "choices"  : [
-                "Nie",
-                "Troche",
-                "Średnio",
-                "bardzo"
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
             ],
             "answer"   : ""
         },
         {
-            "question" : "Given this:",
-            "details"  : "<img src='./assets/data/images/q1_1.jpg' /><p>Which message will be returned by injecting this service and executing 'myService.getMessage()'?</p>",
+            "id": 5,
+            "question" : "Zwykle wolę działać samotnie.",
             "choices"  : [
-                "Nie",
-                "Troche",
-                "Średnio",
-                "bardzo"
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
             ],
             "answer"   : ""
         },
         {
-            "question" : "When using Jasmine for TDD, what would you use to determine if an event handler was called:",
+            "id": 6,
+            "question" : "Często czuję się napięty(a) i zdenerwowany(a)",
             "choices"  : [
-                "Nie",
-                "Troche",
-                "Średnio",
-                "bardzo"
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
             ],
             "answer"   : ""
         },
         {
-            "question" : "In AngularJS, when do you need to use $scope.apply()? Which is the best answer:",
+            "id": 7,
+            "question" : "Jeśli ktoś chce zwierzyć mi się ze swoich problemów, to zawsze chętnie go wysłucham.",
             "choices"  : [
-                "Nie",
-                "Troche",
-                "Średnio",
-                "bardzo"
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
             ],
             "answer"   : ""
         },
         {
-            "question" : "In AngularJS, where should DOM manipulation occur ?",
+            "id": 8,
+            "question" : "Łatwo nawiązuję kontakty z nowo poznanymi osobami.",
             "choices"  : [
-                "Nie",
-                "Troche",
-                "Średnio",
-                "bardzo"
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 9,
+            "question" : "Nigdy nie popełniam błędów w pracy.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 10,
+            "question" : "Uważam, że pozwalanie uczniom na słuchanie kontrowersyjnych poglądów, może im zamieszać w głowach i wprowadzić w błąd.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 11,
+            "question" : "Często wpadam w złość z powodu w jaki inni mnie traktują.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 12,
+            "question" : "Jeśli mówię komuś przykre rzeczy, to często źle się z tym czuję.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 13,
+            "question" : "Trudno mi odmówić wykonania polecenia nawet gdy się z nim nie zgadzam.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 14,
+            "question" : "Często czuję się bezradny(a) i potrzebuję kogoś, kto rozwiązałby moje problemy.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 15,
+            "question" : "Wiele osób uważa mnie za świetnego przywódcę.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 16,
+            "question" : "Jestem osobą skuteczną, która zawsze kończy, co rozpoczęła.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 17,
+            "question" : "Odmawianie ludziom przychodzi mi z trudnością.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 18,
+            "question" : "Zwykle los mi sprzyja.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 19,
+            "question" : "„Wczucie się” w czyjeś położenie zwykle przychodzi mi z łatwością.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 20,
+            "question" : "Często o coś się martwię.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 21,
+            "question" : "Wolał(a)bym raczej współpracować z innymi, niż z nimi rywalizować.",
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
             ],
             "answer"   : ""
         }

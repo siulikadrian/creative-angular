@@ -10,3 +10,45 @@
 @import "modules/modal.scss";
 @import "modules/footer.scss"; 
 @import "modules/profiler.scss"; 
+
+.mt {
+
+	margin-top: 45px;
+
+}
+
+.form-control {
+	
+	select {
+
+		&:hover, &:focus, &:active {
+
+			outline: none;
+
+		}
+
+	}
+
+}
+
+ul{
+	list-style: none;
+	padding:0;
+	margin: 0;
+
+	li {
+
+		text-decoration: none;
+
+	}
+}
+
+a{
+	text-decoration: none;
+
+	&:hover {
+
+		text-decoration: none;
+
+	}
+}

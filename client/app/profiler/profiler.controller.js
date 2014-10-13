@@ -1,60 +1,145 @@
 'use strict';
 
 angular.module('creativeRecruitmentApp')
-  .controller('ProfilerController', function ($scope, $http, $location, $timeout) {
+	
+  .controller('ProfilerListController', function ($scope, $http, UserListSrv, $modalOps) {
 
-	  		
+  	UserListSrv.query(function(data){
+		$scope.items = data;
+	});
 
-	$http({method: 'GET', url: '/assets/data/questions.json'})
+	$scope.addUser = function(){
 
-	  .success(function(questions) {
-	    $scope.questions = questions.questions;
-	    $scope.currentQuestion = $scope.questions[$scope.actualQuestion];
-	    
-	  })
-	  .error(function(data, status, headers, config) {
-	    console.log(data,status,headers,config);
-	    alert('wystapił błąd', data, status);
+		$modalOps.addUser();
+
+	}
+
+	$scope.addCompany = function(){
+
+		$modalOps.addCompany();
+
+	}
+  	
+  })
+  .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route){
+
+  	function timeOgar(){
+  		var objToday = new Date(),
+	        weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+	        dayOfWeek = weekday[objToday.getDay()],
+	        domEnder = new Array( 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th' ),
+	        dayOfMonth = today + (objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder[objToday.getDate()] : objToday.getDate() + domEnder[parseFloat(("" + objToday.getDate()).substr(("" + objToday.getDate()).length - 1))],
+	        months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+	        curMonth = months[objToday.getMonth()],
+	        curYear = objToday.getFullYear(),
+	        curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
+	        curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
+	        curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
+	        curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
+			var today = curHour + ":" + curMinute + "." + curSeconds + curMeridiem + " " + dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
+			console.log(today);
+  	}
+
+  	UserListSrv.query(function(data){
+
+		$scope.data = _.findWhere(data, {_id: $route.current.params.id});
+		$scope.user = $scope.data.user[0];
+
 
 	});
+
+  	
+  })
+  .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps) {
+
+	  		
+  	$scope.getQuestions = function(){
+
+  		$http({method: 'GET', url: '/assets/data/questions.json'})
+
+		  .success(function(questions) {
+
+		    $rootScope.questions = questions.questions;
+
+		    $scope.workQuestions = angular.copy($rootScope.questions);
+
+		    $scope.actualQuestion = $scope.workQuestions[0].id; //tutaj chyba cos nie tak z tym id
+		    $scope.currentQuestion = $rootScope.questions[$scope.actualQuestion];
+		    
+		  })
+		  .error(function(data, status, headers, config) {
+		    console.log(data,status,headers,config);
+		    alert('wystapił błąd', data, status);
+
+		});	
+
+		$scope.$watch('actualQuestion', function(){
+
+			$timeout(function(){
+				$scope.currentQuestion = $rootScope.questions[$scope.actualQuestion];
+				_checkEmptyAnswer();
+			}, 100);
+
+		});
+  	};	
+
+  	function _checkEmptyAnswer(){
+
+  		var arrAns = [];
+
+  		angular.forEach($rootScope.questions, function(value, key){
+
+  			if(value.answer == "") arrAns.push(value);
+
+  		});
+
+  		console.log(arrAns, 'arrAns');
+
+  		if(arrAns.length === 1) $scope.hideNext = true;
+
+  	}
+
+	$scope.userInfo = {},
+	$scope.modalCurrentQuestion = "pytanie testowe";
+
+	$scope.questionsEmpty = [];
 
 	var resultToSend = {
 		startTime: '',
 		endTime: '',
-		result: {}
+		result: {},
+		user: {}
 	};
 
 	$scope.hideNext = false;
 
-	$scope.$watch('actualQuestion', function(){
+	function validateAnswers(){
 
-		$timeout(function(){
-			$scope.currentQuestion = $scope.questions[$scope.actualQuestion];
-			if($scope.actualQuestion === ($scope.questions.length - 1)) $scope.hideNext = true
-		}, 100);
+		if($scope.workQuestions.length == 1) {
+			alert('teraz odpowiadasz na ostatnie pytanie');
+			$scope.hideNext = true;
+			console.log($scope.workQuestions, 'workQuestions');
+		}
 
-
-
-		console.log('from watcher', $scope.actualQuestion);
-
-	});
-
-	$scope.actualQuestion = 0;
+	}
 
 	$scope.sendProfilerQuestions = function(){
 
 		if($scope.currentQuestion.answer === "") {
 
-			alert('nie wypelniles odpowiedzi!!!');
+			$modalOps.info('NIE TAK SZYBKO!', 'Musisz zaznaczyć ostatnią odpowiedź zanim zakończysz test.');
 			return;
 
 		}
 
 		var e = new Date();
 		resultToSend.endTime = e;
+		resultToSend.startTime = $rootScope.startTime;
+		resultToSend.user = $rootScope.user;
 
-		angular.forEach($scope.questions, function(value, key) {
+		angular.forEach($rootScope.questions, function(value, key) {
 			resultToSend.result[key] = {
+				id: value.id,
 				question: value.question,
 				answer: value.answer
 			}
@@ -62,32 +147,117 @@ angular.module('creativeRecruitmentApp')
 
 		console.log(resultToSend);
 
+		$http.post('/api/profiler', resultToSend).
+		  success(function(data, status, headers, config) {
+		    
+		  	console.log('sukces');
+		  	console.log(data);
+
+		  }).
+		  error(function(data, status, headers, config) {
+		  	console.log(data, status, headers, config);
+		    
+		});
+
 		resultToSend = {
 			startTime: '',
 			endTime: '',
-			result: {}
+			result: {},
+			user: {}
 		};
-		
+
 		$scope.endProfiler();
 	};
+
+	function removeItemFromArr(collection, index){
+		collection.splice(index,1);
+	}
+
+	$scope.goToNext = function(){
+
+		var currentID = _.findWhere($scope.workQuestions, {id: $scope.actualQuestion});
+
+		/*if($scope.questionsEmpty.length){
+			console.log('ilosc itemow bez odpowiedzi', $scope.questionsEmpty.length);
+			angular.forEach($scope.questionsEmpty, function(value, key){
+				console.log('porownanie wartosci', value.id, currentID.id);
+				if(value.id == currentID.id) {
+					removeItemFromArr($scope.questionsEmpty, key);
+					console.log(value);
+				}
+			});
+			console.log('ilosc itemow bez odpowiedzi po mozliwym usunięciu', $scope.questionsEmpty.length);
+		} else {
+			console.log('nie bylo jeszcze przeskoku bez odpowiedzi');
+		}		*/
+
+		removeItemFromArr($scope.workQuestions, currentID);
+
+		$scope.actualQuestion = $scope.workQuestions[0].id;
+
+		console.log($scope.workQuestions, 'new work without erlier question');
+		console.log($rootScope.questions);
+		
+		$('.questions-wrapper').css('opacity', 0);
+		setTimeout(function(){
+			$('.questions-wrapper').css('opacity', 1);	
+		},400);
+
+	}
 
 	$scope.nextQuestion = function(){
 
 		if($scope.currentQuestion.answer === "") {
 
-			alert('nie wypelniles odpowiedzi!!!');
+			$modalOps.info('NIE TAK SZYBKO!', 'Musisz zaznaczyć odpowiedź zanim przejdziesz do następnego pytania.');
 			return;
-
 		}
 
-		console.log($scope.currentQuestion);
-		$scope.actualQuestion++;
+		$scope.goToNext();
+		
+	}
+
+	$rootScope.$on('emptyArrRemoveItem', function(event, index, id){
+		console.log($scope.questionsEmpty,'question empty before remove item on index', index);
+		debugger;
+		console.log(event, index, 'index to remove in real array', id);
+		removeItemFromArr($scope.questionsEmpty, index);
+	});
+
+	//removeItemFromArr($scope.workQuestions, _.findWhere($scope.workQuestions, {id: $scope.actualQuestion}));
+
+	$scope.goToNoAnswerQuestion = function(id){
+
+		if(!$scope.questionsEmpty.length) return;
+
+		$modalOps.question(_.findWhere($scope.questionsEmpty, {id: id}), $scope.questionsEmpty);
+	}
+
+	$rootScope.$on('nextQuestionWithoutAnswer', function(){
+		goToNextQuestionNoAnswer();
+	});
+
+	function goToNextQuestionNoAnswer(){
+
+		$scope.questionsEmpty.push($scope.currentQuestion);
+		$scope.goToNext();
+	}
+
+	$scope.profilerFrom = function(){
+
+		$location.path('/profiler/start');
+
 	}
     
     $scope.startProfiler = function(){
+
+    	$rootScope.user = $scope.userInfo;
+
     	var s = new Date();
-    	resultToSend.startTime = s;
-      	$location.path('/profiler/questions');
+
+    	$rootScope.startTime = s;	
+
+       	$location.path('/profiler/questions');
 
     }
 

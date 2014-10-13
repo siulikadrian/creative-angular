@@ -1,0 +1,58 @@
+<div class="modal-wrapper">
+
+	<div class="modal-body">
+		<div class="modal_information">
+				
+			<div class="modal-information-header text-center">
+		        Pytania, które zostały ominięte.
+			</div>
+
+		    <div class="modal-information-content text-center">
+
+		    	<div class="question-name">
+
+					{{emptyQuestion.question}}
+
+				</div>
+				<div class="clearfix"></div>
+				<div class="question-answers">
+
+					<div class="single-question-wrap">
+						<input id="answer-0-{{$index}}-modal" ng-model="emptyQuestion.answer" value="0" type="radio">
+	            		<label for="answer-0-{{$index}}-modal"  class="radio-label">{{emptyQuestion.choices[0]}}</label>
+					</div>
+					<div class="single-question-wrap">
+						<input id="answer-1-{{$index}}-modal" ng-model="emptyQuestion.answer" value="1" type="radio">
+	            		<label for="answer-1-{{$index}}-modal"  class="radio-label">{{emptyQuestion.choices[1]}}</label>
+            		</div>
+					<div class="single-question-wrap">
+						<input id="answer-2-{{$index}}-modal" ng-model="emptyQuestion.answer" value="2" type="radio">
+	            		<label for="answer-2-{{$index}}-modal"  class="radio-label">{{emptyQuestion.choices[2]}}</label>
+            		</div>
+					<div class="single-question-wrap">
+						<input id="answer-3-{{$index}}-modal" ng-model="emptyQuestion.answer" value="3" type="radio">
+	            		<label for="answer-3-{{$index}}-modal"  class="radio-label">{{emptyQuestion.choices[3]}}</label>
+            		</div>
+            		<div class="single-question-wrap">
+						<input id="answer-4-{{$index}}-modal" ng-model="emptyQuestion.answer" value="4" type="radio">
+	            		<label for="answer-4-{{$index}}-modal"  class="radio-label">{{emptyQuestion.choices[4]}}</label>
+            		</div>
+
+				</div>
+			</div>
+
+		</div>
+		<button ng-if="emptyQuestions.length > 1" class="button-cr" ng-click="nextQ()">
+			<span class="hover-bg">
+				<span class="hover-text">Następne pytanie</span>
+			</span>
+			Następne pytanie
+		</button>
+		<button ng-if="emptyQuestions.length === 1" class="button-cr mt" ng-click="nextQ()">
+			<span class="hover-bg">
+				<span class="hover-text">Odpowiedz</span>
+			</span>
+			Odpowiedz
+		</button>
+	</div>
+</div>

@@ -1,0 +1,144 @@
+
+<div class="profiler-wrapper">
+
+	<div class="profiler-from-wrapper">
+
+		<form name="form" class="css-form form-horizontal" novalidate>
+
+			<div class="form-group input-cr">
+				<div class="form-header">Imię</div>
+				<div>
+					<input type="text" class="form-control" ng-model="userInfo.firstName">
+				</div>
+				<div class="form-header">Nazwisko</div>
+				<div>
+					<input type="text" class="form-control" ng-model="userInfo.surnameName">
+				</div>
+				<div class="form-header">Firma</div>
+				<div>
+					<input type="text" class="form-control" ng-model="userInfo.company">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="form-header">Płeć:</div> 
+				<div>
+					<input type="radio" id="gender-male" ng-model="userInfo.gender" value="male" />
+					<label for="gender-male">Mężczyzna</label>
+				</div>
+				<div>
+		    		<input type="radio" id="gender-female" ng-model="userInfo.gender" value="female" />
+		    		<label for="gender-female">Kobieta</label>
+		    	</div>
+			</div>
+
+			<div class="form-group input-cr">
+				<div class="form-header">Wiek (podaj rok urodzenia)</div>
+		    	<input class="form-control" type="number" ng-model="userInfo.year" name="uAge" required />
+			</div>
+
+			<div class="form-group">
+
+				<div class="form-header">Stan cywilny:</div> 
+				<div>
+		    		<input type="radio" id="status-free" ng-model="userInfo.status" value="kawaler/panna" />
+		    		<label for="status-free">kawaler/panna</label>
+		    	</div>
+		    	<div>
+		    		<input type="radio" id="status-lock" ng-model="userInfo.status" value="W związku małżeńskim" />
+		    		<label for="status-lock">W związku małżeńskim</label>
+		    	</div>
+		    	<div>
+		    		<input type="radio" id="status-another" ng-model="userInfo.status" value="Inne" />
+		    		<label for="status-another">Inne</label>
+		    	</div>
+				
+			</div>
+
+			<div class="form-group">
+				
+				<div class="form-header">Formalna nazwa stanowiska pracy:</div> 
+				<div>
+			    	<input type="radio" id="job1" ng-model="userInfo.job" value="Właściciel/prezes/dyrektor zarządzający" />
+			    	<label for="job1">Właściciel/prezes/dyrektor zarządzający</label>
+		    	</div>
+		    	<div>
+			    	<input type="radio" id="job2" ng-model="userInfo.job" value="Dyrektor/kierownik określonej struktury (pionu, działu, komórki)" />
+			    	<label for="job2">Dyrektor/kierownik określonej struktury (pionu, działu, komórki)</label>
+		    	</div>
+		    	<div>
+			    	<input type="radio" id="job3" ng-model="userInfo.job" value="Specjalista/referent/" />
+			    	<label for="job3">Specjalista/referent/</label>
+		    	</div>
+		    	<div>
+			    	<input type="radio" id="job4" ng-model="userInfo.job" value="Inne" />
+			    	<label for="job4">Inne</label>
+		    	</div>
+
+			</div>
+
+			<div class="form-group">
+				<div class="form-header">Praca w:</div> 
+				<div>
+			    	<input type="radio" id="job-area-1" ng-model="userInfo.jobArea" value="Sprzedaży i/lub obsłudze klienta" />
+			    	<label for="job-area-1">Sprzedaży i/lub obsłudze klienta</label>
+		    	</div>
+		    	<div>
+			    	<input type="radio" id="job-area-2" ng-model="userInfo.jobArea" value="Marketingu (promocji, reklamie itd.)" />
+			    	<label for="job-area-2">Marketingu (promocji, reklamie itd.)</label>
+		    	</div>
+		    	<div>
+			    	<input type="radio" id="job-area-3" ng-model="userInfo.jobArea" value="Inne" />
+			    	<label for="job-area-3">Inne</label>
+		    	</div>
+			</div>
+
+			<div class="form-group input-cr short-input">
+				<div class="form-header">Staż pracy (w latach)</div>
+				<div>
+					<label>W obecnej firmie</label>
+					<input  class="form-control" type="number" ng-model="userInfo.actualWrokYear" name="actualWrokYear" required />
+				</div> 
+				<div>
+					<label>Licząc łącznie</label>
+					<input  class="form-control" type="number" ng-model="userInfo.wrokYear" name="wrokYear" required />
+				</div> 
+			</div>
+
+			<div class="form-group">
+				
+				<div class="form-header">Wyniki sprzedażowe w obecnej pracy w ostatnim roku (na tle innych osób w firmie):</div> 
+				<div>
+			    	<input type="radio" id="achieve-1" ng-model="userInfo.achieve" value="Zdecydowanie lepsze" />
+			    	<label for="achieve-1">Zdecydowanie lepsze</label>
+		    	</div>
+		    	<div>
+			    	<input type="radio" id="achieve-2" ng-model="userInfo.achieve" value="Raczej lepsze" />
+			    	<label for="achieve-2">Raczej lepsze</label>
+		    	</div>
+		    	<div>
+			    	<input type="radio" id="achieve-3" ng-model="userInfo.achieve" value="Porównywalne, ani lepsze ani gorsze" />
+			    	<label for="achieve-3">Porównywalne, ani lepsze ani gorsze</label>
+		    	</div>
+		    	<div>
+			    	<input type="radio" id="achieve-4" ng-model="userInfo.achieve" value="Raczej gorsze" />
+			    	<label for="achieve-4">Raczej gorsze</label>
+		    	</div>
+		    	<div>
+			    	<input type="radio" id="achieve-5" ng-model="userInfo.achieve" value="Zdecydowanie gorsze" />
+			    	<label for="achieve-5">Zdecydowanie gorsze</label>
+		    	</div>
+			</div>
+		</form>
+	</div>
+
+	<button class="button-cr" ng-click="startProfiler()" ng-disabled="form.$invalid">
+		<span class="hover-bg">
+			<span class="hover-text">
+				Rozpocznij test
+			</span>
+		</span>
+		Rozpocznij test
+	</button>
+
+</div>

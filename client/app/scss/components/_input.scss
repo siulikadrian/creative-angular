@@ -1,0 +1,83 @@
+.input-cr {
+
+	position: relative;
+
+	::-webkit-input-placeholder {
+	   color: black;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color: black;  
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: black;  
+	}
+
+	:-ms-input-placeholder {  
+	   color: black;  
+	}
+
+	
+	input {
+
+		@extend %input-cr
+
+	}
+
+	&.short-input {
+
+		width: 50%;
+
+	}
+
+	&.invalid {
+
+		&:before {
+
+			content: "";
+			display: block;
+			position: absolute;
+			left: -30px;
+			width: 8px;
+			height: 8px;
+			background: red;
+			top: 5px;
+
+		}
+
+	}
+
+}
+
+select {
+	
+	box-shadow: none !important;
+	border-color: black !important;
+
+}
+
+%input-cr {
+
+	border: none;
+	outline: none;
+	box-shadow: none;
+
+	border-radius: 0;
+
+	border-bottom: 2px solid black;
+
+	padding-left: 0;
+	
+	&:focus, &:active, &:visited {
+
+		border: none;
+		outline: none;
+		box-shadow: none;
+
+		border-bottom: 2px solid black;
+
+
+	}
+
+}

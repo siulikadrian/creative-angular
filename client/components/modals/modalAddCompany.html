@@ -1,0 +1,35 @@
+<div class="modal-wrapper">
+
+	<div class="modal-body">
+		<div class="modal_information">
+				
+			<div class="modal-information-header text-center">
+		        Dodaj Firmę
+			</div>
+
+		    <div class="modal-information-content text-center">
+		    	<form name="form">
+			    	<div class="form-group input-cr">	
+						<div>
+							<input placeholder="Nazwa firmy" type="text" class="form-control" ng-model="newCompany.name" required>
+						</div>
+						<div>
+							<input placeholder="Osoba kontaktowa" type="text" class="form-control" ng-model="newCompany.contactPerson" required>
+						</div>
+						<div>
+							<input placeholder="NIP" type="text" class="form-control" ng-model="newCompany.nip" required>
+						</div>
+					</div>
+		    	</form>
+			</div>
+			<button class="button-cr" ng-click="addNewCompany()" ng-disabled="form.$invalid">
+				<span class="hover-bg">
+					<span class="hover-text">
+						Dodaj
+					</span>
+				</span>
+				Dodaj
+			</button>
+		</div>
+	</div>
+</div>
