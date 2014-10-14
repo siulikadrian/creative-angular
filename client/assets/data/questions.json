@@ -5,6 +5,7 @@
         {
             "id": 0,
             "question" : "Często zdarza się, że zgadzam się na coś tylko dlatego, że nie potrafię odmówić.",
+            "requireBy": 0,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -17,6 +18,7 @@
         {
             "id": 1,
             "question" : "Wierzę, że nawet gdy coś pójdzie nie tak, to dam sobie radę w życiu.",
+            "requireBy": 0,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -29,6 +31,7 @@
         {
             "id": 2,
             "question" : "Kiedy ktoś inny próbuje narzucić mi swoje zdanie z reguły sprzeciwiam się temu z całą stanowczością.",
+            "requireBy": 0,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -41,6 +44,7 @@
         {
             "id": 3,
             "question" : "Szybko zauważam, gdy ktoś w moim otoczeniu jest smutny lub przygnębiony.",
+            "requireBy": 1,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -53,6 +57,7 @@
         {
             "id": 4,
             "question" : "Lubię uczyć się nowych rzeczy.",
+            "requireBy": 1,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -65,6 +70,7 @@
         {
             "id": 5,
             "question" : "Zwykle wolę działać samotnie.",
+            "requireBy": 1,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -77,6 +83,7 @@
         {
             "id": 6,
             "question" : "Często czuję się napięty(a) i zdenerwowany(a)",
+            "requireBy": 1,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -89,6 +96,7 @@
         {
             "id": 7,
             "question" : "Jeśli ktoś chce zwierzyć mi się ze swoich problemów, to zawsze chętnie go wysłucham.",
+            "requireBy": 2,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -101,6 +109,7 @@
         {
             "id": 8,
             "question" : "Łatwo nawiązuję kontakty z nowo poznanymi osobami.",
+            "requireBy": 2,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -113,6 +122,7 @@
         {
             "id": 9,
             "question" : "Nigdy nie popełniam błędów w pracy.",
+            "requireBy": 2,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -125,6 +135,7 @@
         {
             "id": 10,
             "question" : "Uważam, że pozwalanie uczniom na słuchanie kontrowersyjnych poglądów, może im zamieszać w głowach i wprowadzić w błąd.",
+            "requireBy": 2,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -137,6 +148,7 @@
         {
             "id": 11,
             "question" : "Często wpadam w złość z powodu w jaki inni mnie traktują.",
+            "requireBy": 3,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -149,6 +161,7 @@
         {
             "id": 12,
             "question" : "Jeśli mówię komuś przykre rzeczy, to często źle się z tym czuję.",
+            "requireBy": 4,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -161,6 +174,7 @@
         {
             "id": 13,
             "question" : "Trudno mi odmówić wykonania polecenia nawet gdy się z nim nie zgadzam.",
+            "requireBy": 3,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -173,6 +187,7 @@
         {
             "id": 14,
             "question" : "Często czuję się bezradny(a) i potrzebuję kogoś, kto rozwiązałby moje problemy.",
+            "requireBy": 4,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -185,6 +200,7 @@
         {
             "id": 15,
             "question" : "Wiele osób uważa mnie za świetnego przywódcę.",
+            "requireBy": 3,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -197,6 +213,7 @@
         {
             "id": 16,
             "question" : "Jestem osobą skuteczną, która zawsze kończy, co rozpoczęła.",
+            "requireBy": 4,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -209,6 +226,7 @@
         {
             "id": 17,
             "question" : "Odmawianie ludziom przychodzi mi z trudnością.",
+            "requireBy": 3,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -221,6 +239,7 @@
         {
             "id": 18,
             "question" : "Zwykle los mi sprzyja.",
+            "requireBy": 4,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -233,6 +252,7 @@
         {
             "id": 19,
             "question" : "„Wczucie się” w czyjeś położenie zwykle przychodzi mi z łatwością.",
+            "requireBy": 2,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -245,6 +265,7 @@
         {
             "id": 20,
             "question" : "Często o coś się martwię.",
+            "requireBy": 3,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -257,6 +278,7 @@
         {
             "id": 21,
             "question" : "Wolał(a)bym raczej współpracować z innymi, niż z nimi rywalizować.",
+            "requireBy": 1,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",

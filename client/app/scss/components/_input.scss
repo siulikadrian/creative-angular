@@ -21,7 +21,14 @@
 	
 	input {
 
-		@extend %input-cr
+		@extend %input-cr;
+
+	}
+
+	textarea {
+
+		@extend %input-cr;
+		resize: vertical;
 
 	}
 

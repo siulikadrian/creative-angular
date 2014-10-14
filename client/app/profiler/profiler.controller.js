@@ -22,7 +22,7 @@ angular.module('creativeRecruitmentApp')
   	
   })
   .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route){
-
+/*
   	function timeOgar(){
   		var objToday = new Date(),
 	        weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
@@ -38,17 +38,182 @@ angular.module('creativeRecruitmentApp')
 	        curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
 			var today = curHour + ":" + curMinute + "." + curSeconds + curMeridiem + " " + dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
 			console.log(today);
+  	}*/
+
+  	function _coutArytmetical(collection){
+
+  		var arytmetical = 0;
+
+  		angular.forEach(collection, function(value, key){
+  			arytmetical = arytmetical + parseInt(value.answer);
+  		})
+
+  		return (arytmetical/collection.length).toFixed(2);
+
   	}
 
   	UserListSrv.query(function(data){
 
 		$scope.data = _.findWhere(data, {_id: $route.current.params.id});
 		$scope.user = $scope.data.user[0];
+		$scope.questions = _.sortBy($scope.data.result[0], 'id');
+
+		$scope.parts = {
+
+			asertywnosc: _coutArytmetical(_.where($scope.questions, {requireBy: 0})),
+			przywodztwo: _coutArytmetical(_.where($scope.questions, {requireBy: 1})),
+			empatia: _coutArytmetical(_.where($scope.questions, {requireBy: 2})),
+			sumiennosc: _coutArytmetical(_.where($scope.questions, {requireBy: 3})),
+			ekstrawersja: _coutArytmetical(_.where($scope.questions, {requireBy: 4})),
+			pozytywne: _coutArytmetical(_.where($scope.questions, {requireBy: 0})),
+			otwartosc: _coutArytmetical(_.where($scope.questions, {requireBy: 1})),
+			niestabilnosc: _coutArytmetical(_.where($scope.questions, {requireBy: 2}))
 
 
+		};
 	});
 
-  	
+  	$scope.interpretation = {};
+
+  	$scope.sendInterpretations = function(){
+
+  		console.log($scope.interpretation);
+
+  	};
+
+  	$scope.strongSite = [];
+  	$scope.currentStrong = "";
+
+  	$scope.wrongSite = [];
+  	$scope.currentWrong = "";
+
+  	$scope.recomend = [];
+  	$scope.currentRecomend = "";
+
+  	$scope.addStrongSite = function(){
+
+  		if($scope.currentStrong === "") return;
+
+  		$scope.strongSite.push($scope.currentStrong);
+  		$scope.currentStrong = "";
+
+  	}
+
+  	$scope.addWrongSite = function(){
+
+  		if($scope.currentWrong === "") return;
+
+  		$scope.wrongSite.push($scope.currentWrong);
+  		$scope.currentWrong = "";
+
+  	}
+
+  	$scope.addRecomend = function(){
+
+  		if($scope.currentRecomend === "") return;
+
+  		$scope.recomend.push($scope.currentRecomend);
+  		$scope.currentRecomend = "";
+
+  	}
+
+  	function _GRAPH() {
+
+  		var graphData = [{
+        // Visits
+	        data: [ [6, 1.9], [7, 3.15], [8, 3.5], [9, 2.16], [10, 4.3], [11, 3.78], [12, 5], [13, 1] ],
+	        color: '#000000'
+	    }, {
+	        // Returning Visits
+	        data: [ [6, 3.1], [7, 3.6], [8, 4.1], [9, 3.6], [10, 3.9], [11, 4.1], [12, 3.8], [13, 2.7], ],
+	        color: 'red',
+	        points: { radius: 4, fillColor: '#ffffff' }
+	    }];
+
+	    $.plot($('#graph-lines'), graphData, {
+		    series: {
+		        points: {
+		            show: true,
+		            radius: 5
+		        },
+		        lines: {
+		            show: true
+		        },
+		        shadowSize: 0
+		    },
+		    grid: {
+		        color: '#646464',
+		        borderColor: 'transparent',
+		        borderWidth: 22,
+		        hoverable: true
+		    },
+		    xaxis: {
+		        tickColor: 'transparent',
+		        tickDecimals: 2
+		    },
+		    yaxis: {
+		        tickSize: 1
+		    }
+		});
+		 
+		// Bars
+		$.plot($('#graph-bars'), graphData, {
+		    series: {
+		        bars: {
+		            show: true,
+		            barWidth: .9,
+		            align: 'center'
+		        },
+		        shadowSize: 0
+		    },
+		    grid: {
+		        color: '#646464',
+		        borderColor: 'transparent',
+		        borderWidth: 20,
+		        hoverable: true
+		    },
+		    xaxis: {
+		        tickColor: 'transparent',
+		        tickDecimals: 2
+		    },
+		    yaxis: {
+		        tickSize: 1000
+		    }
+		});
+
+		$('#graph-bars').hide();
+ 
+		$('#lines').on('click', function (e) {
+		    $('#bars').removeClass('active');
+		    $('#graph-bars').fadeOut();
+		    $(this).addClass('active');
+		    $('#graph-lines').fadeIn();
+		    e.preventDefault();
+		});
+		 
+		$('#bars').on('click', function (e) {
+		    $('#lines').removeClass('active');
+		    $('#graph-lines').fadeOut();
+		    $(this).addClass('active');
+		    $('#graph-bars').fadeIn().removeClass('hidden');
+		    e.preventDefault();
+		});
+
+		function showTooltip(x, y, contents) {
+		    $('<div id="tooltip">' + contents + '</div>').css({
+		        top: y - 16,
+		        left: x + 20
+		    }).appendTo('body').fadeIn();
+		}
+		 
+		var previousPoint = null;
+		 
+
+  	}
+
+  	_GRAPH();
+
+
   })
   .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps) {
 
@@ -141,7 +306,8 @@ angular.module('creativeRecruitmentApp')
 			resultToSend.result[key] = {
 				id: value.id,
 				question: value.question,
-				answer: value.answer
+				answer: value.answer,
+				requireBy: value.requireBy
 			}
 		});	
 
