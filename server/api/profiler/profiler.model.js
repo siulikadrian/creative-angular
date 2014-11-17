@@ -1,23 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.Types.ObjectId;
+    Schema = mongoose.Schema;
 
-var UserProfileSchema = new Schema({
-
-	achieve: String,
-	actualWrokYear: Number,
-	firstName: String,
-	gender: String,
-	job: String,
-	jobArea: String,
-	status: String,
-	surnameName: String,
-	wrokYear: Number,
-	year: Number
-
-});
 
 var ProfilerSchema = new Schema({
   

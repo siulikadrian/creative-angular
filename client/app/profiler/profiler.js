@@ -3,6 +3,10 @@
 angular.module('creativeRecruitmentApp')
   .config(function ($routeProvider) {
     $routeProvider
+      .when('/profiler/login', {
+        templateUrl: 'app/profiler/profiler.login.html',
+        controller: 'ProfilerLoginController'
+      })
       .when('/profiler', {
         templateUrl: 'app/profiler/profiler.html',
         controller: 'ProfilerController'

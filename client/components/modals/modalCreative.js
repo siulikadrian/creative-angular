@@ -108,12 +108,10 @@ angular.module('creativeRecruitmentApp')
                         $scope.msg = (angular.isDefined(msg)) ? msg : 'Treść nieokreślona :-)';
                         $scope.showBtn = true;
 
-                        if(showBtn == false) {
-                            $scope.showBtn = false;
-                        }
+                        if(showBtn == false) $scope.showBtn = false;
 
                         $scope.goToNextQuestionNoAnswer = function(){
-                            
+
                             console.log('rootscope go to next');
                             $rootScope.$broadcast('nextQuestionWithoutAnswer');
                             console.log('bordcast next question');
@@ -148,7 +146,6 @@ angular.module('creativeRecruitmentApp')
                         $scope.addNewUser = function(){
 
                             console.log($scope.newUser);
-
                         }
 
                     }
@@ -160,9 +157,15 @@ angular.module('creativeRecruitmentApp')
                 opts = angular.extend({}, {
                     size: 'md',
                     templateUrl: 'components/modals/modalAddCompany.html',
-                    controller: function ($scope, $modalInstance) {
+                    controller: function ($scope, $modalInstance, ProfilerCompanySrv) {
 
                         $scope.newCompany = {};
+
+                        ProfilerCompanySrv.query(function(company){
+                            console.log('all company from api', company);
+                        }, function(err, status){
+                            console.log('error get all company', err, status);
+                        });
 
                         $scope.cancel = function () {
                             $modalInstance.close();
@@ -171,6 +174,12 @@ angular.module('creativeRecruitmentApp')
                         $scope.addNewCompany = function(){
 
                             console.log($scope.newCompany);
+
+                            ProfilerCompanySrv.save($scope.newCompany, function(data){
+
+                                console.log('data from create new company response', data);
+
+                            });
 
                         }
 

@@ -1,7 +1,12 @@
 'use strict';
 
 angular.module('creativeRecruitmentApp')
-	
+
+  .controller('ProfilerLoginController', function ($scope){
+
+
+
+  })
   .controller('ProfilerListController', function ($scope, $http, UserListSrv, $modalOps) {
 
   	UserListSrv.query(function(data){
@@ -12,39 +17,22 @@ angular.module('creativeRecruitmentApp')
 
 		$modalOps.addUser();
 
-	}
+	};
 
 	$scope.addCompany = function(){
 
 		$modalOps.addCompany();
 
 	}
-  	
+
   })
   .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route){
-/*
-  	function timeOgar(){
-  		var objToday = new Date(),
-	        weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
-	        dayOfWeek = weekday[objToday.getDay()],
-	        domEnder = new Array( 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th' ),
-	        dayOfMonth = today + (objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder[objToday.getDate()] : objToday.getDate() + domEnder[parseFloat(("" + objToday.getDate()).substr(("" + objToday.getDate()).length - 1))],
-	        months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
-	        curMonth = months[objToday.getMonth()],
-	        curYear = objToday.getFullYear(),
-	        curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
-	        curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
-	        curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
-	        curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
-			var today = curHour + ":" + curMinute + "." + curSeconds + curMeridiem + " " + dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
-			console.log(today);
-  	}*/
 
   	function _coutArytmetical(collection){
 
   		var arytmetical = 0;
 
-  		angular.forEach(collection, function(value, key){
+  		angular.forEach(collection, function(value){
   			arytmetical = arytmetical + parseInt(value.answer);
   		})
 
@@ -155,7 +143,7 @@ angular.module('creativeRecruitmentApp')
 		        tickSize: 1
 		    }
 		});
-		 
+
 		// Bars
 		$.plot($('#graph-bars'), graphData, {
 		    series: {
@@ -182,7 +170,7 @@ angular.module('creativeRecruitmentApp')
 		});
 
 		$('#graph-bars').hide();
- 
+
 		$('#lines').on('click', function (e) {
 		    $('#bars').removeClass('active');
 		    $('#graph-bars').fadeOut();
@@ -190,7 +178,7 @@ angular.module('creativeRecruitmentApp')
 		    $('#graph-lines').fadeIn();
 		    e.preventDefault();
 		});
-		 
+
 		$('#bars').on('click', function (e) {
 		    $('#lines').removeClass('active');
 		    $('#graph-lines').fadeOut();
@@ -205,9 +193,9 @@ angular.module('creativeRecruitmentApp')
 		        left: x + 20
 		    }).appendTo('body').fadeIn();
 		}
-		 
+
 		var previousPoint = null;
-		 
+
 
   	}
 
@@ -217,7 +205,7 @@ angular.module('creativeRecruitmentApp')
   })
   .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps) {
 
-	  		
+
   	$scope.getQuestions = function(){
 
   		$http({method: 'GET', url: '/assets/data/questions.json'})
@@ -230,13 +218,13 @@ angular.module('creativeRecruitmentApp')
 
 		    $scope.actualQuestion = $scope.workQuestions[0].id; //tutaj chyba cos nie tak z tym id
 		    $scope.currentQuestion = $rootScope.questions[$scope.actualQuestion];
-		    
+
 		  })
 		  .error(function(data, status, headers, config) {
 		    console.log(data,status,headers,config);
 		    alert('wystapił błąd', data, status);
 
-		});	
+		});
 
 		$scope.$watch('actualQuestion', function(){
 
@@ -246,7 +234,7 @@ angular.module('creativeRecruitmentApp')
 			}, 100);
 
 		});
-  	};	
+  	};
 
   	function _checkEmptyAnswer(){
 
@@ -309,20 +297,20 @@ angular.module('creativeRecruitmentApp')
 				answer: value.answer,
 				requireBy: value.requireBy
 			}
-		});	
+		});
 
 		console.log(resultToSend);
 
 		$http.post('/api/profiler', resultToSend).
 		  success(function(data, status, headers, config) {
-		    
+
 		  	console.log('sukces');
 		  	console.log(data);
 
 		  }).
 		  error(function(data, status, headers, config) {
 		  	console.log(data, status, headers, config);
-		    
+
 		});
 
 		resultToSend = {
@@ -363,10 +351,10 @@ angular.module('creativeRecruitmentApp')
 
 		console.log($scope.workQuestions, 'new work without erlier question');
 		console.log($rootScope.questions);
-		
+
 		$('.questions-wrapper').css('opacity', 0);
 		setTimeout(function(){
-			$('.questions-wrapper').css('opacity', 1);	
+			$('.questions-wrapper').css('opacity', 1);
 		},400);
 
 	}
@@ -380,7 +368,7 @@ angular.module('creativeRecruitmentApp')
 		}
 
 		$scope.goToNext();
-		
+
 	}
 
 	$rootScope.$on('emptyArrRemoveItem', function(event, index, id){
@@ -414,14 +402,14 @@ angular.module('creativeRecruitmentApp')
 		$location.path('/profiler/start');
 
 	}
-    
+
     $scope.startProfiler = function(){
 
     	$rootScope.user = $scope.userInfo;
 
     	var s = new Date();
 
-    	$rootScope.startTime = s;	
+    	$rootScope.startTime = s;
 
        	$location.path('/profiler/questions');
 

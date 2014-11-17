@@ -12,6 +12,8 @@
 var _ = require('lodash');
 var Profiler = require('./profiler.model');
 
+/*Profiler UserListInfo*/
+
 // Get list of things
 exports.index = function(req, res) {
   Profiler.find(function (err, profiler) {
@@ -50,5 +52,6 @@ exports.create = function(req, res) {
 };
 
 function handleError(res, err) {
+  console.log('handleError');
   return res.send(500, err);
 }
