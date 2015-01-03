@@ -1,0 +1,42 @@
+.logout.logout-fixed{
+  color: white;
+
+  .admin-item {
+
+    display: block;
+
+    position: fixed;
+    right:0;
+
+    margin-bottom: 5px;
+    marin-top: 5px;
+    padding: 10px;
+
+    background: black;
+
+    border-radius: 3px;
+
+    @include transition-property(width);
+    @include transition-duration(0.3s);
+
+    width: 20px;
+
+    &:hover {
+
+      width: 100px;
+      cursor: pointer;
+
+    }
+
+    &:first-child{
+      top: 150px;
+    }
+
+    &:last-child{
+      top: 190px;
+    }
+
+  }
+
+
+}

@@ -5,6 +5,7 @@ angular.module('creativeRecruitmentApp')
     var currentUser = {};
     if($cookieStore.get('token')) {
       currentUser = User.get();
+      $rootScope.currentUser = currentUser;
     }
 
     return {
@@ -27,6 +28,7 @@ angular.module('creativeRecruitmentApp')
         success(function(data) {
           $cookieStore.put('token', data.token);
           currentUser = User.get();
+          $rootScope.currentUser = currentUser;
           deferred.resolve(data);
           return cb();
         }).
@@ -46,6 +48,7 @@ angular.module('creativeRecruitmentApp')
        */
       logout: function() {
         $cookieStore.remove('token');
+        $location.path('/profiler/login');
         currentUser = {};
       },
 
@@ -61,8 +64,8 @@ angular.module('creativeRecruitmentApp')
 
         return User.save(user,
           function(data) {
-            $cookieStore.put('token', data.token);
-            currentUser = User.get();
+            /*$cookieStore.put('token', data.token);
+            currentUser = User.get();*/
             return cb(user);
           },
           function(err) {

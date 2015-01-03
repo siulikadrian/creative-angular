@@ -4,6 +4,27 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var generatePassword = require('password-generator');
+
+var express = require('express');
+var app = express();
+var nodemailer = require('express-mailer');
+
+nodemailer.extend(app, {
+  from: 'adriansiulik@gmail.com',
+  host: 'smtp.gmail.com', // hostname
+  secureConnection: true, // use SSL
+  port: 465, // port for secure SMTP
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+  auth: {
+    user: 'adriansiulik@gmail.com',
+    pass: '52160055'
+  }
+});
+
+app.set('views', config.root + '/server/views');
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -27,10 +48,29 @@ exports.create = function (req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
+  newUser.password = generatePassword(12, false);
+  console.log('user password', newUser.password);
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
-    var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
-    res.json({ token: token });
+    /*var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
+    res.json({ token: token });*/
+
+    app.mailer.send('email', {
+      to: newUser.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
+      subject: 'Prfoiler dostępy', // REQUIRED.
+      otherProperty: {
+        password: newUser.password
+      } // All additional properties are also passed to the template as local variables.
+    }, function (err, message) {
+      if (err) {
+        // handle error
+        console.log(err);
+        res.send('There was an error sending the email', err);
+        return;
+      }
+      console.log('email send success');
+      res.send(message);
+    });
   });
 };
 

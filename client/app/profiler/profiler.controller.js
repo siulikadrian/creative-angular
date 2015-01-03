@@ -2,9 +2,29 @@
 
 angular.module('creativeRecruitmentApp')
 
-  .controller('ProfilerLoginController', function ($scope){
+  .controller('ProfilerLoginController', function ($scope, Auth, $location){
 
+    $scope.user = {};
+    $scope.errors = {};
 
+    $scope.login = function(form) {
+      $scope.submitted = true;
+
+      if (form.$valid) {
+        Auth.login({
+          email: $scope.user.email,
+          password: $scope.user.password
+        })
+          .then(function (data) {
+            console.log('login' + data);
+            // Logged in, redirect to home
+            $location.path('/');
+          })
+          .catch(function (err) {
+            $scope.errors.other = err.message;
+          });
+      }
+    }
 
   })
   .controller('ProfilerListController', function ($scope, $http, UserListSrv, $modalOps) {

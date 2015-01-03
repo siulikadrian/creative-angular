@@ -9,26 +9,32 @@ angular.module('creativeRecruitmentApp')
       })
       .when('/profiler', {
         templateUrl: 'app/profiler/profiler.html',
-        controller: 'ProfilerController'
+        controller: 'ProfilerController',
+        authenticate: true
       })
       .when('/profiler/questions', {
         templateUrl: 'app/profiler/profiler.questions.html',
-        controller: 'ProfilerController'
+        controller: 'ProfilerController',
+        authenticate: true
       })
       .when('/profiler/start', {
         templateUrl: 'app/profiler/profiler.from.html',
-        controller: 'ProfilerController'
+        controller: 'ProfilerController',
+        authenticate: true
       })
       .when('/profiler/result', {
         templateUrl: 'app/profiler/profiler.result.html',
-        controller: 'ProfilerController'
+        controller: 'ProfilerController',
+        authenticate: true
       })
       .when('/profiler/list', {
         templateUrl: 'app/profiler/profiler.list.html',
-        controller: 'ProfilerListController'
+        controller: 'ProfilerListController',
+        isAdmin: true
       })
       .when('/profiler/user/:id', {
         templateUrl: 'app/profiler/profiler.user.html',
-        controller: 'ProfilerSingleUser'
-      });      
+        controller: 'ProfilerSingleUser',
+        isAdmin: true
+      });
   });

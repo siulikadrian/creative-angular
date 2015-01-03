@@ -46,11 +46,34 @@ angular.module('creativeRecruitmentApp', [
   })
 
   .run(function ($rootScope, $location, Auth) {
+
+    //general rootScope methods
+
+    function logout(){
+      Auth.logout();
+      $rootScope.currentUser = {};
+    }
+
+    $rootScope.logout = logout;
+
+
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next) {
+
+      console.log('rootScope', $rootScope.currentUser);
+
       Auth.isLoggedInAsync(function(loggedIn) {
+
+        var isAdmin = Auth.isAdmin();
+        console.log('is admin', isAdmin);
+
+        if(next.isAdmin && !isAdmin){
+          console.log('nie masz uprawnien zeby przejsc do tej strony');
+          $location.path('/');
+        }
+
         if (next.authenticate && !loggedIn) {
-          $location.path('/login');
+          $location.path('/profiler/login');
         }
       });
     });

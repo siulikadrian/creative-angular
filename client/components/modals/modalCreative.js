@@ -135,20 +135,55 @@ angular.module('creativeRecruitmentApp')
                 opts = angular.extend({}, {
                     size: 'md',
                     templateUrl: 'components/modals/modalAddUser.html',
-                    controller: function ($scope, $modalInstance) {
+                    controller: function($scope, $modalInstance, $location, Auth, sendMailSrv){
 
-                        $scope.newUser = {};
+                      $scope.user = {};
+                      $scope.errors = {};
 
-                        $scope.cancel = function () {
-                            $modalInstance.close();
+                      $scope.register = function(form) {
+
+                        $scope.submitted = true;
+
+                        if(form.$valid) {
+                          Auth.createUser({
+                            name: $scope.user.name,
+                            email: $scope.user.email,
+                            role: $scope.user.role
+                          })
+                            .then( function(data) {
+                              // Account created, redirect to home
+                              console.log('accout created', data);
+
+                             /* sendMailSrv.fetch({
+                                email: $scope.user.email
+                              }, function(data){
+                                console.log(data);
+                              });*/
+
+                              $modalInstance.close();
+                              //reset model
+                              $scope.user = {
+                                name: "",
+                                email: "",
+                                password: ""
+                              };
+
+                              $location.path('/');
+                            })
+                            .catch( function(err) {
+                              err = err.data;
+                              $scope.errors = {};
+
+                              // Update validity of form fields that match the mongoose errors
+                              angular.forEach(err.errors, function(error, field) {
+                                form[field].$setValidity('mongoose', false);
+                                $scope.errors[field] = error.message;
+                              });
+                            });
                         }
+                      };
+                  }
 
-                        $scope.addNewUser = function(){
-
-                            console.log($scope.newUser);
-                        }
-
-                    }
                 });
 
                 return $modal.open(opts);

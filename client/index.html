@@ -48,14 +48,15 @@
           </nav>
           <nav>
             <div class="menu-main">
-              
+
               <ul>
                 <li><a href="/about">kim jesteśmy</a></li>
                 <li><a href="/co-robimy">co robimy</a></li>
                 <li><a href="/jak-dzialamy">jak działamy</a></li>
                 <li><a href="/wartosci-misja">wartości i misja</a></li>
                 <li><a href="/obszar-dzialania">obszar działania</a></li>
-                <li class="lastLink"><a href="/profiler/login">profiler</a></li>
+                <li ng-if="currentUser.role" class="lastLink"><a href="/profiler/">profiler</a></li>
+                <li ng-if="!currentUser.role" class="lastLink"><a href="/profiler/login">profiler</a></li>
               </ul>
             </div>
           </nav>
@@ -64,6 +65,8 @@
       <div class="clearBorder"></div>
       <div class="clearfix"></div>
     </div>
+
+    <admin-dctv></admin-dctv>
     <div id="main-content" class="main-content wrapper">
 
       <div class="contant-main">
@@ -134,13 +137,14 @@
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="app/profiler/profiler.controller.js"></script>
+          <script src="app/profiler/profiler.directive.js"></script>
           <script src="app/profiler/profiler.js"></script>
-          <script src="app/profiler/profiler.timerDctv.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/modals/modalCreative.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
           <script src="components/services/profilerCompanySrv.js"></script>
+          <script src="components/services/sendMailSrv.js"></script>
           <script src="components/services/userListSrv.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
