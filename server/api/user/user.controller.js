@@ -57,7 +57,7 @@ exports.create = function (req, res, next) {
 
     app.mailer.send('email', {
       to: newUser.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
-      subject: 'Prfoiler dostępy', // REQUIRED.
+      subject: 'DOSTĘP PROFILER', // REQUIRED.
       otherProperty: {
         password: newUser.password
       } // All additional properties are also passed to the template as local variables.
@@ -117,6 +117,23 @@ exports.changePassword = function(req, res, next) {
       res.send(403);
     }
   });
+};
+
+exports.changeAnswerStatus = function(req, res, next) {
+
+  console.log('req body', req);
+
+  var userId = req.user._id;
+
+  User.findById(userId, function(err, user){
+    console.log('user', user);
+    user.isAnswerd = true;
+    user.save(function(err){
+      if(err) return validationError(res,err);
+      res.send(200);
+    })
+  });
+
 };
 
 /**

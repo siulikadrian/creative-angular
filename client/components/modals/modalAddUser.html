@@ -35,6 +35,17 @@
               </p>
             </div>
 
+            <div class="form-group input-cr">
+                
+                <select
+                  ng-model="user.client"
+                  name="company"
+                  required="true">
+                  <option ng-repeat="company in companyUsers track by company.name" name="company.name" value="{{company._id}}">{{company.name}}</option>
+                </select>
+
+            </div>
+
             <button class="button-cr" type="submit">
               <span class="hover-bg">
                 <span class="hover-text">

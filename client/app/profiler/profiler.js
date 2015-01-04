@@ -24,8 +24,7 @@ angular.module('creativeRecruitmentApp')
       })
       .when('/profiler/result', {
         templateUrl: 'app/profiler/profiler.result.html',
-        controller: 'ProfilerController',
-        authenticate: true
+        controller: 'ProfilerController'
       })
       .when('/profiler/list', {
         templateUrl: 'app/profiler/profiler.list.html',

@@ -34,19 +34,15 @@ angular.module('creativeRecruitmentApp')
 	});
 
 	$scope.addUser = function(){
-
 		$modalOps.addUser();
-
 	};
 
 	$scope.addCompany = function(){
-
 		$modalOps.addCompany();
-
 	}
 
   })
-  .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route){
+  .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route, $http, $modalOps){
 
   	function _coutArytmetical(collection){
 
@@ -60,11 +56,28 @@ angular.module('creativeRecruitmentApp')
 
   	}
 
+  	$scope.removeFromArray = function(arr, index) {
+  		
+  		arr.splice(index, 1);
+  		console.log(arr, index);
+
+  	}
+
+  	var ID;
+
   	UserListSrv.query(function(data){
 
-		$scope.data = _.findWhere(data, {_id: $route.current.params.id});
+  		ID = $route.current.params.id;
+		$scope.data = _.findWhere(data, {_id: ID});
 		$scope.user = $scope.data.user[0];
 		$scope.questions = _.sortBy($scope.data.result[0], 'id');
+
+		console.log($scope.data);
+		$scope.interpetation = $scope.data.interpretation[0] || {};
+
+		if(!$scope.interpetation.strongSite) $scope.interpetation.strongSite = [];
+		if(!$scope.interpetation.wrongSite) $scope.interpetation.wrongSite = [];  
+		if(!$scope.interpetation.recomend) $scope.interpetation.recomend = [];
 
 		$scope.parts = {
 
@@ -81,28 +94,33 @@ angular.module('creativeRecruitmentApp')
 		};
 	});
 
-  	$scope.interpretation = {};
-
   	$scope.sendInterpretations = function(){
 
-  		console.log($scope.interpretation);
+  		console.log($scope.interpetation);
+
+  		$http.put('/api/profiler/' + ID, {interpetation: $scope.interpetation})
+  			.success(function(data){
+
+  				$modalOps.info('SUKCES', 'Zmiany zostały zapisane');
+
+  			})
+  			.error(function(data, error, config, headers){
+  				console.log(data, error, config, headers);
+  			});
 
   	};
 
-  	$scope.strongSite = [];
   	$scope.currentStrong = "";
 
-  	$scope.wrongSite = [];
   	$scope.currentWrong = "";
 
-  	$scope.recomend = [];
   	$scope.currentRecomend = "";
 
   	$scope.addStrongSite = function(){
 
   		if($scope.currentStrong === "") return;
 
-  		$scope.strongSite.push($scope.currentStrong);
+  		$scope.interpetation.strongSite.push($scope.currentStrong);
   		$scope.currentStrong = "";
 
   	}
@@ -111,7 +129,7 @@ angular.module('creativeRecruitmentApp')
 
   		if($scope.currentWrong === "") return;
 
-  		$scope.wrongSite.push($scope.currentWrong);
+  		$scope.interpetation.wrongSite.push($scope.currentWrong);
   		$scope.currentWrong = "";
 
   	}
@@ -120,7 +138,7 @@ angular.module('creativeRecruitmentApp')
 
   		if($scope.currentRecomend === "") return;
 
-  		$scope.recomend.push($scope.currentRecomend);
+  		$scope.interpetation.recomend.push($scope.currentRecomend);
   		$scope.currentRecomend = "";
 
   	}
@@ -223,8 +241,14 @@ angular.module('creativeRecruitmentApp')
 
 
   })
-  .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps) {
+  .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps, Auth) {
 
+  	function logout(){
+
+      Auth.logout();
+      $rootScope.currentUser = {};
+
+    }
 
   	$scope.getQuestions = function(){
 
@@ -296,7 +320,7 @@ angular.module('creativeRecruitmentApp')
 
 	}
 
-	$scope.sendProfilerQuestions = function(){
+	$scope.profilerFrom = function(){
 
 		if($scope.currentQuestion.answer === "") {
 
@@ -308,7 +332,6 @@ angular.module('creativeRecruitmentApp')
 		var e = new Date();
 		resultToSend.endTime = e;
 		resultToSend.startTime = $rootScope.startTime;
-		resultToSend.user = $rootScope.user;
 
 		angular.forEach($rootScope.questions, function(value, key) {
 			resultToSend.result[key] = {
@@ -319,28 +342,51 @@ angular.module('creativeRecruitmentApp')
 			}
 		});
 
+		$rootScope.resultToSend = resultToSend;
 		console.log(resultToSend);
 
-		$http.post('/api/profiler', resultToSend).
+		$location.path('/profiler/start');
+
+	}
+
+	$scope.sendProfilerQuestions = function(){
+		$rootScope.resultToSend.user = $scope.userInfo;
+		$rootScope.resultToSend.user._id = $rootScope.currentUser._id;
+		$rootScope.resultToSend.user.name = $rootScope.currentUser.name;
+		$rootScope.resultToSend.user.email = $rootScope.currentUser.email;
+		$rootScope.resultToSend.user.interpetation = {};
+
+		$rootScope.resultToSend.user.isAnswerd = true;
+
+		console.log($rootScope.resultToSend);
+
+		$http.post('/api/profiler', $rootScope.resultToSend).
 		  success(function(data, status, headers, config) {
 
-		  	console.log('sukces');
-		  	console.log(data);
+		  	$http.put('/api/users/' + $rootScope.resultToSend.user._id + '/answered' , {_id: $rootScope.resultToSend.user._id})
+
+	  		.success(function(data){
+	  			console.log('put success', data);
+	  			logout();
+	  		})
+	  		.error(function(data, error, header, status){
+	  			console.log('put error', data, error, header, status);
+	  		});
+
+		  	$rootScope.resultToSend = {
+				startTime: '',
+				endTime: '',
+				result: {},
+				user: {}
+			};
+
+			$scope.endProfiler();
 
 		  }).
 		  error(function(data, status, headers, config) {
 		  	console.log(data, status, headers, config);
 
 		});
-
-		resultToSend = {
-			startTime: '',
-			endTime: '',
-			result: {},
-			user: {}
-		};
-
-		$scope.endProfiler();
 	};
 
 	function removeItemFromArr(collection, index){
@@ -350,20 +396,6 @@ angular.module('creativeRecruitmentApp')
 	$scope.goToNext = function(){
 
 		var currentID = _.findWhere($scope.workQuestions, {id: $scope.actualQuestion});
-
-		/*if($scope.questionsEmpty.length){
-			console.log('ilosc itemow bez odpowiedzi', $scope.questionsEmpty.length);
-			angular.forEach($scope.questionsEmpty, function(value, key){
-				console.log('porownanie wartosci', value.id, currentID.id);
-				if(value.id == currentID.id) {
-					removeItemFromArr($scope.questionsEmpty, key);
-					console.log(value);
-				}
-			});
-			console.log('ilosc itemow bez odpowiedzi po mozliwym usunięciu', $scope.questionsEmpty.length);
-		} else {
-			console.log('nie bylo jeszcze przeskoku bez odpowiedzi');
-		}		*/
 
 		removeItemFromArr($scope.workQuestions, currentID);
 
@@ -392,9 +424,6 @@ angular.module('creativeRecruitmentApp')
 	}
 
 	$rootScope.$on('emptyArrRemoveItem', function(event, index, id){
-		console.log($scope.questionsEmpty,'question empty before remove item on index', index);
-		debugger;
-		console.log(event, index, 'index to remove in real array', id);
 		removeItemFromArr($scope.questionsEmpty, index);
 	});
 
@@ -415,12 +444,6 @@ angular.module('creativeRecruitmentApp')
 
 		$scope.questionsEmpty.push($scope.currentQuestion);
 		$scope.goToNext();
-	}
-
-	$scope.profilerFrom = function(){
-
-		$location.path('/profiler/start');
-
 	}
 
     $scope.startProfiler = function(){

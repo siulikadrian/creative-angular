@@ -18,6 +18,9 @@ exports.setup = function (User, config) {
         if (!user.authenticate(password)) {
           return done(null, false, { message: 'This password is not correct.' });
         }
+        if(user.isAnswerd){
+          return done(null, false, { message: 'Test został już wypełniony. Ponowne logowanie niemożliwe.'});
+        }
         return done(null, user);
       });
     }

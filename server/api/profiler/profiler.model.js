@@ -9,7 +9,8 @@ var ProfilerSchema = new Schema({
 	startTime: {type: Date, default: Date.now},
 	endTime: {type: Date, default: Date.now},
 	result: [],
-	user: []
+	user: [],
+	interpretation: []
 
 });
 

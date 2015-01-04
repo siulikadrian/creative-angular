@@ -1,5 +1,4 @@
 .logout.logout-fixed{
-  color: white;
 
   .admin-item {
 
@@ -12,10 +11,6 @@
     marin-top: 5px;
     padding: 10px;
 
-    background: black;
-
-    border-radius: 3px;
-
     @include transition-property(width);
     @include transition-duration(0.3s);
 
@@ -23,7 +18,7 @@
 
     &:hover {
 
-      width: 100px;
+      width: 120px;
       cursor: pointer;
 
     }
@@ -33,7 +28,7 @@
     }
 
     &:last-child{
-      top: 190px;
+      top: 200px;
     }
 
   }

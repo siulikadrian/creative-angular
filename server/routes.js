@@ -12,7 +12,7 @@ module.exports = function(app) {
   app.use('/api/mail', require('./api/mail'));
   app.use('/api/users', require('./api/user'));
   app.use('/api/profiler', require('./api/profiler'));
-  app.use('/api/profilerCompany', require('./api/profiler/profilerCompany'));
+  app.use('/api/profiler-company', require('./api/profiler/profilerCompany'));
 
   app.use('/auth', require('./auth'));
 

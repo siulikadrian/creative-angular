@@ -1,6 +1,6 @@
 angular.module('creativeRecruitmentApp')
 	.service('ProfilerCompanySrv', function ($resource) {
-        return $resource('/api/profiler/profilerCompany/', {}, {
+        return $resource('/api/profiler-company/', {}, {
             fetch: {
                 method: 'GET'
             },

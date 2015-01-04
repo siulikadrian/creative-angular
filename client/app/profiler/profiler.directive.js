@@ -17,8 +17,7 @@ angular.module('creativeRecruitmentApp')
         }
 
         $rootScope.goToQuestionList = function(){
-          console.log($location);
-          $location.path('/');
+          $location.path('/profiler/list');
         };
 
         $scope.logout = logout;

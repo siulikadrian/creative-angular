@@ -43,12 +43,33 @@ exports.create = function(req, res) {
       result: [
         profiler.result
       ],
-      user: [profiler.user]
+      user: [profiler.user],
+      interpetation: []
 
     }).save(function(err, profiler) {
+
       if(err) { return handleError(res, err); }
       return res.json(201, profiler);
+
     });
+};
+
+exports.updateInterpretation = function(req, res) {
+
+
+
+  Profiler.findById(req.params.id, function(err, user){
+
+    var interpetation = req.body.interpetation;
+    user.interpretation = [];
+    user.interpretation.push(interpetation);  
+        
+    user.save(function(err){
+
+      if(err) return handleError(res, err);
+      res.send(200, user);
+    })
+  });
 };
 
 function handleError(res, err) {

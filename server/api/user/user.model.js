@@ -3,6 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
+var OBJ_ID = new mongoose.Types.ObjectId();
 
 var UserSchema = new Schema({
   name: String,
@@ -10,6 +11,15 @@ var UserSchema = new Schema({
   role: {
     type: String,
     default: 'user'
+  },
+  client: String,
+  isAnswerd: {
+    type: Boolean,
+    default: false
+  },
+  isInterpreted: {
+    type: Boolean,
+    default: false
   },
   hashedPassword: String,
   provider: String,

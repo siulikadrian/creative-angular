@@ -1,6 +1,6 @@
-<div ng-if="currentUser.role" class="logout logout-fixed" ng-click="logout()">
+<div ng-if="currentUser.role === 'admin'" class="logout logout-fixed">
 
-  <div class="admin-item question-list" ng-click="goToQuestionList()">Zarządzanie</div>
-  <div class="admin-item logout" ng-click="logout()">Wyloguj</div>
+  <div class="admin-item button-cr question-list" ng-click="goToQuestionList()">Zarządzanie</div>
+  <div class="admin-item button-cr logout" ng-click="logout()">Wyloguj</div>
 
 </div>

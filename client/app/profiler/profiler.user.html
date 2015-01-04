@@ -3,6 +3,7 @@
 
 	<div class="container">
 
+	<br/>
 		<div class="row">
 
 			<div class="col-xs-5">
@@ -15,23 +16,11 @@
 					<div class="user-custom-information">
 						<div class="col-xs-3">
 							<div class="custom-name">
-								Imię
+								Imię i Nazwisko
 							</div>
 						</div>
 						<div class="col-xs-9">
-							{{user.firstName}}
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="user-custom-information">
-						<div class="col-xs-3">
-							<div class="custom-name">
-								Nazwisko
-							</div>
-						</div>
-						<div class="col-xs-9">
-							{{user.surnameName}}
+							{{user.name}}
 						</div>
 					</div>
 				</div>
@@ -237,52 +226,43 @@
 
 						<div class="form-group input-cr">
 							<label>ASERTYWNOŚĆ</label>
-							<textarea class="form-control" ng-model="interpretation.stage0" rows="4"></textarea>
+							<textarea class="form-control" ng-model="interpetation.stage0" rows="4"></textarea>
 						</div>
 						<div class="form-group input-cr">
 							<label>PRZYWÓDZTWO</label>
-							<textarea class="form-control" ng-model="interpretation.stage1" rows="4"></textarea>
+							<textarea class="form-control" ng-model="interpetation.stage1" rows="4"></textarea>
 						</div>
 						<div class="form-group input-cr">
 							<label>EMPATIA</label>
-							<textarea class="form-control" ng-model="interpretation.stage2" rows="4"></textarea>
+							<textarea class="form-control" ng-model="interpetation.stage2" rows="4"></textarea>
 						</div>
 						<div class="form-group input-cr">
 							<label>SUMIENNOŚĆ</label>
-							<textarea class="form-control" ng-model="interpretation.stage3" rows="4"></textarea>
+							<textarea class="form-control" ng-model="interpetation.stage3" rows="4"></textarea>
 						</div>
 						<div class="form-group input-cr">
 							<label>EKSTRAWERSJA</label>
-							<textarea class="form-control" ng-model="interpretation.stage4" rows="4"></textarea>
+							<textarea class="form-control" ng-model="interpetation.stage4" rows="4"></textarea>
 						</div>
 						<div class="form-group input-cr">
 							<label>POZYTYWNE MYŚLENIE</label>
-							<textarea class="form-control" ng-model="interpretation.stage5" rows="4"></textarea>
+							<textarea class="form-control" ng-model="interpetation.stage5" rows="4"></textarea>
 						</div>
 						<div class="form-group input-cr">
 							<label>OTWARTOŚĆ</label>
-							<textarea class="form-control" ng-model="interpretation.stage6" rows="4"></textarea>
+							<textarea class="form-control" ng-model="interpetation.stage6" rows="4"></textarea>
 						</div>
 						<div class="form-group input-cr">
 							<label>NIESTABILNOŚĆ</label>
-							<textarea class="form-control" ng-model="interpretation.stage7" rows="4"></textarea>
+							<textarea class="form-control" ng-model="interpetation.stage7" rows="4"></textarea>
 						</div>
 
 					</form>
 
 				</div>
-				<button class="button-cr" ng-click="sendInterpretations()">
-					<span class="hover-bg">
-						<span class="hover-text">
-							Prześlij Interpretację
-						</span>
-					</span>
-					Prześlij Interpretację
-				</button>
 			</div>
 
 		</div>
-
 		<hr>
 
 		<div class="row">
@@ -308,7 +288,7 @@
 				<div class="conclusion">
 
 					<ul>
-						<li ng-repeat="item in strongSite">{{item}}</li>
+						<li ng-repeat="item in interpetation.strongSite">{{item}} <span style="font-weight: bold; cursor: pointer;" class="remove-item" ng-click="removeFromArray(interpetation.strongSite, $index)"> X</span></li>
 					</ul>
 
 				</div>
@@ -336,7 +316,7 @@
 				<div class="conclusion">
 
 					<ul>
-						<li ng-repeat="item in wrongSite">{{item}}</li>
+						<li ng-repeat="item in interpetation.wrongSite">{{item}} <span style="font-weight: bold; cursor: pointer;" class="remove-item" ng-click="removeFromArray(interpetation.wrongSite, $index)"> X</span></li>
 					</ul>
 
 				</div>
@@ -364,7 +344,7 @@
 				<div class="conclusion">
 
 					<ul>
-						<li ng-repeat="item in recomend">{{item}}</li>
+						<li ng-repeat="item in interpetation.recomend">{{item}} <span style="font-weight: bold; cursor: pointer;" class="remove-item" ng-click="removeFromArray(interpetation.recomend, $index)"> X</span></li>
 					</ul>
 
 				</div>
@@ -380,6 +360,28 @@
 
 			</div>
 
+		</div>
+
+		<br/>
+
+		<div style="text-align: center;">
+			<button style="display: inline-block;" class="button-cr" ng-click="sendInterpretations()">
+				<span class="hover-bg">
+					<span class="hover-text">
+						Zapisz Interpretację
+					</span>
+				</span>
+				Zapisz Interpretację
+			</button>
+
+			<button style="display: inline-block;" class="button-cr" ng-click="makePublicProfile()">
+				<span class="hover-bg">
+					<span class="hover-text">
+						Udostępnij dla klienta
+					</span>
+				</span>
+				Udostępnij dla klienta
+			</button>
 		</div>
 
 		<br><br>

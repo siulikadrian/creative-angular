@@ -48,7 +48,6 @@ angular.module('creativeRecruitmentApp')
        */
       logout: function() {
         $cookieStore.remove('token');
-        $location.path('/profiler/login');
         currentUser = {};
       },
 
@@ -137,6 +136,10 @@ angular.module('creativeRecruitmentApp')
        */
       isAdmin: function() {
         return currentUser.role === 'admin';
+      },
+
+      isClient: function() {
+        return currentUser.role === 'client';
       },
 
       /**

@@ -48,20 +48,20 @@
 
 					<div class="row">
 
-						<div class="col-xs-2">
-							Imię
-						</div>
-
-						<div class="col-xs-2">
-							Nazwisko
+						<div class="col-xs-3">
+							Imię i Nazwisko
 						</div>
 
 						<div class="col-xs-5">
 							Branża
 						</div>
 
-						<div class="col-xs-3">
+						<div class="col-xs-2">
 							Staż pracy
+						</div>
+
+						<div class="col-xs-2">
+							Status
 						</div>
 
 					</div>
@@ -71,18 +71,18 @@
 					<a href="/profiler/user/{{item._id}}" class="list-item" ng-repeat="item in items | filter: search">
 						<div class="row">
 							<li>
-								<div class="col-xs-2 name">
-									{{item.user[0].firstName}}
-								</div>
-								<div class="col-xs-2 name">
-									{{item.user[0].surnameName}}
+								<div class="col-xs-3 name">
+									{{item.user[0].name}}
 								</div>
 
 								<div class="col-xs-5">
 									{{item.user[0].jobArea}}
 								</div>
-								<div class="col-xs-3">
+								<div class="col-xs-2">
 									{{item.user[0].actualWrokYear}}/{{item.user[0].wrokYear}}
+								</div>
+								<div class="col-xs-2">
+									{{item.user[0].isAnswerd}}
 								</div>
 							</li>
 						</div>

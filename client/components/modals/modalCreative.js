@@ -135,10 +135,21 @@ angular.module('creativeRecruitmentApp')
                 opts = angular.extend({}, {
                     size: 'md',
                     templateUrl: 'components/modals/modalAddUser.html',
-                    controller: function($scope, $modalInstance, $location, Auth, sendMailSrv){
+                    controller: function($scope, $modalInstance, $location, Auth, sendMailSrv, ProfilerCompanySrv){
 
                       $scope.user = {};
                       $scope.errors = {};
+
+                      ProfilerCompanySrv.query(function(company){
+                            $scope.companyUsers = company;
+                            console.log($scope.companyUsers);
+                        }, function(err, status){
+                            console.log('error get all company', err, status);
+                        });
+
+                      $scope.cancel = function () {
+                        $modalInstance.close();
+                      }
 
                       $scope.register = function(form) {
 
@@ -148,27 +159,14 @@ angular.module('creativeRecruitmentApp')
                           Auth.createUser({
                             name: $scope.user.name,
                             email: $scope.user.email,
-                            role: $scope.user.role
+                            role: $scope.user.role,
+                            client: $scope.user.client
                           })
                             .then( function(data) {
-                              // Account created, redirect to home
-                              console.log('accout created', data);
 
-                             /* sendMailSrv.fetch({
-                                email: $scope.user.email
-                              }, function(data){
-                                console.log(data);
-                              });*/
+                              $scope.cancel();
+                              $scope.user = {};
 
-                              $modalInstance.close();
-                              //reset model
-                              $scope.user = {
-                                name: "",
-                                email: "",
-                                password: ""
-                              };
-
-                              $location.path('/');
                             })
                             .catch( function(err) {
                               err = err.data;
@@ -212,8 +210,11 @@ angular.module('creativeRecruitmentApp')
 
                             ProfilerCompanySrv.save($scope.newCompany, function(data){
 
-                                console.log('data from create new company response', data);
+                                $scope.cancel();
+                                $scope.newCompany = {};
 
+                            }, function(data, error, config, header){
+                                alert('Wystąpił błąd w zapisie nowego klienta.', data, error, config, header);
                             });
 
                         }
