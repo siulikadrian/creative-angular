@@ -48,6 +48,7 @@ angular.module('creativeRecruitmentApp')
        */
       logout: function() {
         $cookieStore.remove('token');
+        $location.path('/profiler/login');
         currentUser = {};
       },
 

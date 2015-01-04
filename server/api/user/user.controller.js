@@ -119,9 +119,22 @@ exports.changePassword = function(req, res, next) {
   });
 };
 
-exports.changeAnswerStatus = function(req, res, next) {
+exports.changeInterpretationStatus = function(req, res, next) {
 
-  console.log('req body', req);
+  var userId = req.user._id;
+
+  User.findById(userId, function(err, user){
+    console.log('user', user);
+    user.isInterpreted = true;
+    user.save(function(err){
+      if(err) return validationError(res,err);
+      res.send(200);
+    })
+  });
+
+};
+
+exports.changeAnswerStatus = function(req, res, next) {
 
   var userId = req.user._id;
 

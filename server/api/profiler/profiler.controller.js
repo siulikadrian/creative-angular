@@ -56,14 +56,26 @@ exports.create = function(req, res) {
 
 exports.updateInterpretation = function(req, res) {
 
-
-
   Profiler.findById(req.params.id, function(err, user){
 
     var interpetation = req.body.interpetation;
     user.interpretation = [];
     user.interpretation.push(interpetation);  
-        
+
+    user.save(function(err){
+
+      if(err) return handleError(res, err);
+      res.send(200, user);
+    })
+  });
+};
+
+exports.updateIsInterpreted = function(req, res) {
+
+  Profiler.findById(req.params.id, function(err, user){
+
+    user.user[0].isInterpreted = true;  
+
     user.save(function(err){
 
       if(err) return handleError(res, err);

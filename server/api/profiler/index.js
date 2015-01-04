@@ -13,6 +13,7 @@ router.get('/', controller.index);
 router.post('/',  controller.create);
 router.get('/:id',  controller.show);
 router.put('/:id', controller.updateInterpretation);
+router.put('/:id/is-interpreted', controller.updateIsInterpreted);
 /*
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);

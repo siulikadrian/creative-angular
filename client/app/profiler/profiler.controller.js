@@ -49,7 +49,7 @@ angular.module('creativeRecruitmentApp')
   		var arytmetical = 0;
 
   		angular.forEach(collection, function(value){
-  			arytmetical = arytmetical + parseInt(value.answer);
+  			arytmetical = arytmetical + parseInt(value.answer) + 1;
   		})
 
   		return (arytmetical/collection.length).toFixed(2);
@@ -80,7 +80,6 @@ angular.module('creativeRecruitmentApp')
 		if(!$scope.interpetation.recomend) $scope.interpetation.recomend = [];
 
 		$scope.parts = {
-
 			asertywnosc: _coutArytmetical(_.where($scope.questions, {requireBy: 0})),
 			przywodztwo: _coutArytmetical(_.where($scope.questions, {requireBy: 1})),
 			empatia: _coutArytmetical(_.where($scope.questions, {requireBy: 2})),
@@ -89,8 +88,6 @@ angular.module('creativeRecruitmentApp')
 			pozytywne: _coutArytmetical(_.where($scope.questions, {requireBy: 0})),
 			otwartosc: _coutArytmetical(_.where($scope.questions, {requireBy: 1})),
 			niestabilnosc: _coutArytmetical(_.where($scope.questions, {requireBy: 2}))
-
-
 		};
 	});
 
@@ -107,7 +104,24 @@ angular.module('creativeRecruitmentApp')
   			.error(function(data, error, config, headers){
   				console.log(data, error, config, headers);
   			});
+  	};
 
+  	$scope.makePublicProfile = function() {
+
+  		$http.put('/api/profiler/' + ID + '/is-interpreted', {})
+
+		.success(function(data){
+			console.log(data);
+			$modalOps.info('SUKCES', 'Zmiany zostały zapisane');
+
+		})
+		.error(function(data, error, config, headers){
+			console.log(data, error, config, headers);
+		});
+  	}
+
+  	$scope.generatePdf = function(){
+  		console.log('generate pdf');
   	};
 
   	$scope.currentStrong = "";
@@ -356,6 +370,7 @@ angular.module('creativeRecruitmentApp')
 		$rootScope.resultToSend.user.email = $rootScope.currentUser.email;
 		$rootScope.resultToSend.user.interpetation = {};
 
+		$rootScope.resultToSend.user.isInterpreted = false;
 		$rootScope.resultToSend.user.isAnswerd = true;
 
 		console.log($rootScope.resultToSend);
@@ -367,7 +382,7 @@ angular.module('creativeRecruitmentApp')
 
 	  		.success(function(data){
 	  			console.log('put success', data);
-	  			logout();
+	  			$scope.endProfiler();
 	  		})
 	  		.error(function(data, error, header, status){
 	  			console.log('put error', data, error, header, status);
@@ -379,8 +394,6 @@ angular.module('creativeRecruitmentApp')
 				result: {},
 				user: {}
 			};
-
-			$scope.endProfiler();
 
 		  }).
 		  error(function(data, status, headers, config) {
@@ -459,9 +472,8 @@ angular.module('creativeRecruitmentApp')
     }
 
     $scope.endProfiler = function(){
-
+    	logout();
     	$location.path('/profiler/result');
 
     }
-
 });

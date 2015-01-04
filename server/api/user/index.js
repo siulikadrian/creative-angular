@@ -12,6 +12,7 @@ router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/answered', auth.isAuthenticated(), controller.changeAnswerStatus);
+router.put('/:id/interpreted', auth.isAuthenticated(), controller.changeInterpretationStatus);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 
