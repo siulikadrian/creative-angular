@@ -18,7 +18,7 @@ nodemailer.extend(app, {
   transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
   auth: {
     user: 'adriansiulik@gmail.com',
-    pass: '52160055'
+    pass: 'ASas52160055'
   }
 });
 
@@ -51,6 +51,7 @@ exports.create = function (req, res, next) {
   newUser.password = generatePassword(12, false);
   console.log('user password', newUser.password);
   newUser.save(function(err, user) {
+    console.log(err, user);
     if (err) return validationError(res, err);
     /*var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
     res.json({ token: token });*/
