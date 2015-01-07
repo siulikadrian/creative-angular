@@ -264,6 +264,7 @@ angular.module('creativeRecruitmentApp')
 
   		ID = $route.current.params.id;
 		$scope.data = _.findWhere(data, {_id: ID});
+		console.log($scope.data);
 		$scope.user = $scope.data.user[0];
 		$scope.questions = _.sortBy($scope.data.result[0], 'id');
 

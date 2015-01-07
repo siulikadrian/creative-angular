@@ -27,7 +27,6 @@ exports.show = function(req, res) {
   Profiler.findById(req.params.id, function (err, profiler) {
     if(err) { return handleError(res, err); }
     if(!profiler) { return res.send(404); }
-    console.info('id', req.params.id, profiler);
     return res.json(profiler);
   });
 };
@@ -74,12 +73,16 @@ exports.updateIsInterpreted = function(req, res) {
 
   Profiler.findById(req.params.id, function(err, user){
 
-    user.user[0].isInterpreted = true;  
+    var us = user;
+    console.log('us', us);
+    us.user[0].isInterpreted = true;
+    user.user = [];
+    console.log(us);
+    user.user.push(us.user[0]);
 
-    user.save(function(err){
-
+    user.save(function(err, user1){
       if(err) return handleError(res, err);
-      res.send(200, user);
+      res.send(200, user1);
     })
   });
 };
