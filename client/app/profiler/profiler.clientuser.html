@@ -1,0 +1,351 @@
+
+<div class="profiler-user-wrapper">
+
+	<div class="container">
+
+	<br/>
+		<div class="row">
+
+			<div class="col-xs-5">
+
+				<div class="single-user-header">
+					Informacje podstawowe
+				</div>
+
+				<div class="row">
+					<div class="user-custom-information">
+						<div class="col-xs-3">
+							<div class="custom-name">
+								Imię i Nazwisko
+							</div>
+						</div>
+						<div class="col-xs-9">
+							{{user.name}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="user-custom-information">
+						<div class="col-xs-3">
+							<div class="custom-name">
+								Płeć
+							</div>
+						</div>
+						<div class="col-xs-9">
+							{{user.gender}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="user-custom-information">
+						<div class="col-xs-3">
+							<div class="custom-name">
+								Stan cywilny
+							</div>
+						</div>
+						<div class="col-xs-9">
+							{{user.status}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="user-custom-information">
+						<div class="col-xs-3">
+							<div class="custom-name">
+								Stanowisko
+							</div>
+						</div>
+						<div class="col-xs-9">
+							{{user.job}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="user-custom-information">
+						<div class="col-xs-3">
+							<div class="custom-name">
+								Branża
+							</div>
+						</div>
+						<div class="col-xs-9">
+							{{user.jobArea}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="user-custom-information">
+						<div class="col-xs-3">
+							<div class="custom-name">
+								Staż pracy obecnie
+							</div>
+						</div>
+						<div class="col-xs-9">
+							{{user.actualWrokYear}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="user-custom-information">
+						<div class="col-xs-3">
+							<div class="custom-name">
+								Staż pracy całkowicie
+							</div>
+						</div>
+						<div class="col-xs-9">
+							{{user.wrokYear}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="user-custom-information">
+						<div class="col-xs-3">
+							<div class="custom-name">
+								Wyniki sprzedażowe
+							</div>
+						</div>
+						<div class="col-xs-9">
+							{{user.achieve}}
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-xs-4 hide__print">
+
+				<div class="single-user-header text-right">
+					Wyniki
+				</div>
+
+				<div class="result-wrap text-right">
+
+					<div class="result-item">
+
+						<span>ASERTYWNOŚĆ</span> <b>{{parts.asertywnosc}}</b>
+
+
+					</div>
+					<div class="result-item">
+
+						<span>PRZYWÓDZTWO</span> <b>{{parts.przywodztwo}}</b>
+						
+
+					</div>
+					<div class="result-item">
+
+						<span>EMPATIA</span> <b>{{parts.empatia}}</b>
+						
+
+					</div>
+					<div class="result-item">
+
+						<span>SUMIENNOŚĆ</span> <b>{{parts.sumiennosc}}</b>
+						
+
+					</div>
+
+					<div class="result-item">
+
+						<span>EKSTRAWERSJA</span> <b>{{parts.ekstrawersja}}</b>
+						
+
+					</div>
+
+					<div class="result-item">
+
+						<span>POZYTYWNE MYŚLENIE</span> <b>{{parts.pozytywne}}</b>
+						
+
+					</div>
+
+					<div class="result-item">
+
+						<span>OTWARTOŚĆ</span> <b>{{parts.otwartosc}}</b>
+						
+
+					</div>
+
+					<div class="result-item">
+
+						<span>NIESTABILNOŚĆ</span> <b>{{parts.niestabilnosc}}</b>
+						
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<br>
+		
+		<div class="data-present">
+
+			<div id="graph-wrapper">
+			    <div class="graph-info">
+			        <a href="javascript:void(0)" class="visitors">Visitors</a>
+			        <a href="javascript:void(0)" class="returning">Returning Visitors</a>
+			 
+			        <a href="#" id="bars"><span></span></a>
+			        <a href="#" id="lines" class="active"><span></span></a>
+			    </div>
+			 
+			    <div class="graph-container">
+			        <div id="graph-lines"></div>
+			        <div id="graph-bars"></div>
+			    </div>
+			</div>
+
+			<div class="data__description">
+				<div class="col-xs-1" style="display: inline-block;">
+					Asertywność
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Przywództwo
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Empatia
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Sumienność
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Ekstrawersja
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Pozytywne <br/> myślenie
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Otwartość na <br/> doświadczenie
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Niestabilność <br/> emocjonalna
+				</div>
+				
+			</div>
+
+		</div>
+
+		<br>
+
+		<div class="row">
+
+			<div class="col-xs-12">
+				<div class="single-user-header">
+					Interpretacja
+				</div>
+				<div class="interpreter-wrapper">
+
+
+					<div class="form-group input-cr">
+						<label>ASERTYWNOŚĆ</label>
+						<div>{{interpetation.stage0}}</div>
+					</div>
+					<div class="form-group input-cr">
+						<label>PRZYWÓDZTWO</label>
+						<div >{{interpetation.stage1}}</div>
+					</div>
+					<div class="form-group input-cr">
+						<label>EMPATIA</label>
+						<div >{{interpetation.stage2}}</div>
+					</div>
+					<div class="form-group input-cr">
+						<label>SUMIENNOŚĆ</label>
+						<div >{{interpetation.stage3}}</div>
+					</div>
+					<div class="form-group input-cr">
+						<label>EKSTRAWERSJA</label>
+						<div >{{interpetation.stage4}}</div>
+					</div>
+					<div class="form-group input-cr">
+						<label>POZYTYWNE MYŚLENIE</label>
+						<div >{{interpetation.stage5}}</div>
+					</div>
+					<div class="form-group input-cr">
+						<label>OTWARTOŚĆ</label>
+						<div >{{interpetation.stage6}}</div>
+					</div>
+					<div class="form-group input-cr">
+						<label>NIESTABILNOŚĆ</label>
+						<div >{{interpetation.stage7}}</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+		<hr>
+
+		<div class="row">
+
+			<div class="col-xs-12">
+
+				<div class="single-user-header">
+					Wnioski
+				</div>
+
+			</div>
+
+			<div class="col-xs-4">
+
+				<div class="header-conclusion">
+					Mocne strony
+				</div>
+
+				<div class="conclusion">
+
+					<ul>
+						<li ng-repeat="item in interpetation.strongSite">{{item}}</li>
+					</ul>
+
+				</div>
+
+			</div>
+			<div class="col-xs-4">
+
+				<div class="header-conclusion">
+					Słabe strony
+				</div>
+				<div class="conclusion">
+
+					<ul>
+						<li ng-repeat="item in interpetation.wrongSite">{{item}} </li>
+					</ul>
+
+				</div>
+
+			</div>
+			<div class="col-xs-4">
+
+				<div class="header-conclusion">
+					Rekomendacje
+				</div>
+
+				<div class="conclusion">
+					<ul>
+						<li ng-repeat="item in interpetation.recomend">{{item}} </li>
+					</ul>
+
+				</div>
+			</div>
+
+		</div>
+
+		<br/>
+
+		<div class="hide__print" style="text-align: center;">
+			<button style="display: inline-block;" class="button-cr" ng-click="generatePdf()">
+				<span class="hover-bg">
+					<span class="hover-text">
+						Drukuj
+					</span>
+				</span>
+				Drukuj
+			</button>
+		</div>
+
+		<br><br>
+
+	</div>
+
+</div>

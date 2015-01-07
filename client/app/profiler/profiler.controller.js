@@ -41,6 +41,197 @@ angular.module('creativeRecruitmentApp')
 		$modalOps.addCompany();
 	}
 
+
+  })
+  .controller('ProfilerSingleClientUser', function ($scope, UserListSrv, $route, $http, $modalOps, $window){
+
+  		function _coutArytmetical(collection){
+
+  		var arytmetical = 0;
+
+  		angular.forEach(collection, function(value){
+  			arytmetical = arytmetical + parseInt(value.answer) + 1;
+  		})
+
+  		return (arytmetical/collection.length).toFixed(2);
+
+  	}
+
+
+  	$scope.removeFromArray = function(arr, index) {
+  		
+  		arr.splice(index, 1);
+  		console.log(arr, index);
+
+  	}
+
+  	var ID;
+
+  	$scope.parts = {};
+
+  	UserListSrv.query(function(data){
+
+  		console.log('user list query', data);
+
+  		ID = $route.current.params.id;
+		$scope.data = _.findWhere(data, {_id: ID});
+		$scope.user = $scope.data.user[0];
+		$scope.questions = _.sortBy($scope.data.result[0], 'id');
+
+		console.log($scope.data);
+		$scope.interpetation = $scope.data.interpretation[0] || {};
+
+		if(!$scope.interpetation.strongSite) $scope.interpetation.strongSite = [];
+		if(!$scope.interpetation.wrongSite) $scope.interpetation.wrongSite = [];  
+		if(!$scope.interpetation.recomend) $scope.interpetation.recomend = [];
+
+		$scope.parts = {
+			asertywnosc: _coutArytmetical(_.where($scope.questions, {requireBy: 0})),
+			przywodztwo: _coutArytmetical(_.where($scope.questions, {requireBy: 1})),
+			empatia: _coutArytmetical(_.where($scope.questions, {requireBy: 2})),
+			sumiennosc: _coutArytmetical(_.where($scope.questions, {requireBy: 3})),
+			ekstrawersja: _coutArytmetical(_.where($scope.questions, {requireBy: 4})),
+			pozytywne: _coutArytmetical(_.where($scope.questions, {requireBy: 5})),
+			otwartosc: _coutArytmetical(_.where($scope.questions, {requireBy: 6})),
+			niestabilnosc: _coutArytmetical(_.where($scope.questions, {requireBy: 7}))
+		};
+
+		_GRAPH();
+
+	});
+
+
+  	$scope.generatePdf = function(){
+  		$window.print();
+  	};
+
+  	function _GRAPH() {
+
+  		var graphData = [{
+        // Visits
+	        data: [ [6, $scope.parts.asertywnosc ], [7, $scope.parts.przywodztwo], [8, $scope.parts.empatia], [9, $scope.parts.sumiennosc], [10, $scope.parts.ekstrawersja], [11, $scope.parts.pozytywne], [12, $scope.parts.otwartosc], [13, $scope.parts.niestabilnosc] ],
+	        color: '#000000'
+	    }, {
+	        // Returning Visits
+	        data: [ [6, 3.1], [7, 3.6], [8, 4.1], [9, 3.6], [10, 3.9], [11, 4.1], [12, 3.8], [13, 2.7], ],
+	        color: 'red',
+	        points: { radius: 4, fillColor: '#ffffff' }
+	    }];
+
+	    var ticks = ['Asertywność', 'Przwództwo', 'Empatia', 'Sumienność', 'Ekstrawagancja', 'Pozytywne', 'Otwartość', 'Niestabilność'];
+
+	    $.plot($('#graph-lines'), graphData, {
+		    series: {
+		        points: {
+		            show: true,
+		            radius: 5
+		        },
+		        lines: {
+		            show: true
+		        },
+		        shadowSize: 0
+		    },
+		    grid: {
+		        color: '#646464',
+		        borderColor: 'transparent',
+		        borderWidth: 22,
+		        hoverable: true
+		    },
+		    xaxis: {
+		        tickColor: '#000000',
+		        tickDecimals: 2,
+		        ticks: ticks
+		    },
+		    yaxis: {
+		        min:0, max: 6,  tickSize: 1
+		    }
+		});
+
+		// Bars
+		$.plot($('#graph-bars'), graphData, {
+		    series: {
+		        bars: {
+		            show: true,
+		            barWidth: .9,
+		            align: 'center'
+		        },
+		        shadowSize: 0
+		    },
+		    grid: {
+		        color: '#646464',
+		        borderColor: 'transparent',
+		        borderWidth: 20,
+		        hoverable: true
+		    },
+		    xaxis: {
+		        tickColor: 'transparent',
+		        tickDecimals: 2
+		    },
+		    yaxis: {
+		        tickSize: 1000
+		    }
+		});
+
+		$('#graph-bars').hide();
+
+		var previousPoint = null, previousLabel = null;
+
+
+		$.fn.UseTooltip = function () {
+		    $(this).bind("plothover", function (event, pos, item) {
+		        if (item) {
+		            if ((previousLabel != item.series.label) || (previousPoint != item.dataIndex)) {
+		                previousPoint = item.dataIndex;
+		                previousLabel = item.series.label;
+		                $("#tooltip").remove();
+
+		                var x = item.datapoint[0];
+		                var y = item.datapoint[1];
+
+		                var color = '#000000';
+		                var month = new Date(x).getMonth();
+
+		                //console.log(item);
+
+		                if (item.seriesIndex == 0) {
+		                    showTooltip(item.pageX,
+		                            item.pageY,
+		                            color,
+		                            "<strong>" + y + "</strong>");
+		                } else {
+		                    showTooltip(item.pageX,
+		                            item.pageY,
+		                            color,
+		                            "<strong>" + y + "</strong>");
+		                }
+		            }
+		        } else {
+		            $("#tooltip").remove();
+		            previousPoint = null;
+		        }
+		    });
+		};
+
+		function showTooltip(x, y, color, contents) {
+		    $('<div id="tooltip">' + contents + '</div>').css({
+		        position: 'absolute',
+		        display: 'none',
+		        top: y +10,
+		        left: x+10,
+		        border: '2px solid ' + color,
+		        padding: '3px',
+		        'font-size': '12px',
+		        'border-radius': '5px',
+		        'background-color': '#fff',
+		        'color': '#000',
+		        'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+		        opacity: 0.9
+		    }).appendTo("body").fadeIn(200);
+		}
+
+		var previousPoint = null;
+		$("#graph-wrapper").UseTooltip();
+	}
   })
   .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route, $http, $modalOps, $window){
 
@@ -68,6 +259,8 @@ angular.module('creativeRecruitmentApp')
   	$scope.parts = {};
 
   	UserListSrv.query(function(data){
+
+  		console.log('user list query', data);
 
   		ID = $route.current.params.id;
 		$scope.data = _.findWhere(data, {_id: ID});
@@ -292,6 +485,10 @@ angular.module('creativeRecruitmentApp')
   	}
   })
   .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps, Auth, UserListSrv) {
+
+  	$scope.statusReturner = function(status){
+  		return status ? "Zinterpretowany" : "Oczekuje na interpretację";
+  	}
 
   	if($rootScope.currentUser.role === 'client'){
 

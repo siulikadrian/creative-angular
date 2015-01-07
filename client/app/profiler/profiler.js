@@ -31,6 +31,15 @@ angular.module('creativeRecruitmentApp')
         controller: 'ProfilerListController',
         isAdmin: true
       })
+      .when('/profiler/list', {
+        templateUrl: 'app/profiler/profiler.list.html',
+        controller: 'ProfilerListController',
+        isAdmin: true
+      })
+      .when('/profiler/client/user/:id', {
+        templateUrl: 'app/profiler/profiler.clientuser.html',
+        controller: 'ProfilerSingleClientUser'
+      })
       .when('/profiler/user/:id', {
         templateUrl: 'app/profiler/profiler.user.html',
         controller: 'ProfilerSingleUser',
