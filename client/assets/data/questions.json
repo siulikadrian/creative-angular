@@ -5,7 +5,9 @@
         {
             "id": 0,
             "question" : "Często zdarza się, że zgadzam się na coś tylko dlatego, że nie potrafię odmówić.",
-            "requireBy": 0,
+            "revert": true,
+            "revertRequireBy": 0,
+            "requireBy": 100,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -18,7 +20,7 @@
         {
             "id": 1,
             "question" : "Wierzę, że nawet gdy coś pójdzie nie tak, to dam sobie radę w życiu.",
-            "requireBy": 0,
+            "requireBy": 5,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -44,7 +46,7 @@
         {
             "id": 3,
             "question" : "Szybko zauważam, gdy ktoś w moim otoczeniu jest smutny lub przygnębiony.",
-            "requireBy": 1,
+            "requireBy": 2,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -57,7 +59,7 @@
         {
             "id": 4,
             "question" : "Lubię uczyć się nowych rzeczy.",
-            "requireBy": 1,
+            "requireBy": 6,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -70,7 +72,7 @@
         {
             "id": 5,
             "question" : "Zwykle wolę działać samotnie.",
-            "requireBy": 1,
+            "requireBy": 100,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -83,7 +85,7 @@
         {
             "id": 6,
             "question" : "Często czuję się napięty(a) i zdenerwowany(a)",
-            "requireBy": 1,
+            "requireBy": 7,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -109,7 +111,7 @@
         {
             "id": 8,
             "question" : "Łatwo nawiązuję kontakty z nowo poznanymi osobami.",
-            "requireBy": 2,
+            "requireBy": 100,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -122,7 +124,7 @@
         {
             "id": 9,
             "question" : "Nigdy nie popełniam błędów w pracy.",
-            "requireBy": 2,
+            "requireBy": 100,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -135,7 +137,9 @@
         {
             "id": 10,
             "question" : "Uważam, że pozwalanie uczniom na słuchanie kontrowersyjnych poglądów, może im zamieszać w głowach i wprowadzić w błąd.",
-            "requireBy": 2,
+            "revert": true,
+            "revertRequireBy": 6,
+            "requireBy": 100,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -148,7 +152,7 @@
         {
             "id": 11,
             "question" : "Często wpadam w złość z powodu w jaki inni mnie traktują.",
-            "requireBy": 3,
+            "requireBy": 100,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -161,7 +165,7 @@
         {
             "id": 12,
             "question" : "Jeśli mówię komuś przykre rzeczy, to często źle się z tym czuję.",
-            "requireBy": 4,
+            "requireBy": 2,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -174,7 +178,9 @@
         {
             "id": 13,
             "question" : "Trudno mi odmówić wykonania polecenia nawet gdy się z nim nie zgadzam.",
-            "requireBy": 3,
+            "revert": true,
+            "revertRequireBy": 0,
+            "requireBy": 100,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -187,7 +193,7 @@
         {
             "id": 14,
             "question" : "Często czuję się bezradny(a) i potrzebuję kogoś, kto rozwiązałby moje problemy.",
-            "requireBy": 4,
+            "requireBy": 7,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -200,7 +206,7 @@
         {
             "id": 15,
             "question" : "Wiele osób uważa mnie za świetnego przywódcę.",
-            "requireBy": 3,
+            "requireBy": 1,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -213,7 +219,7 @@
         {
             "id": 16,
             "question" : "Jestem osobą skuteczną, która zawsze kończy, co rozpoczęła.",
-            "requireBy": 4,
+            "requireBy": 3,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -226,7 +232,9 @@
         {
             "id": 17,
             "question" : "Odmawianie ludziom przychodzi mi z trudnością.",
-            "requireBy": 3,
+            "revert": true,
+            "revertRequireBy": 0,
+            "requireBy": 100,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -239,7 +247,7 @@
         {
             "id": 18,
             "question" : "Zwykle los mi sprzyja.",
-            "requireBy": 4,
+            "requireBy": 5,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -265,7 +273,7 @@
         {
             "id": 20,
             "question" : "Często o coś się martwię.",
-            "requireBy": 3,
+            "requireBy": 7,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
                 "Nie zgadzam się",
@@ -278,6 +286,430 @@
         {
             "id": 21,
             "question" : "Wolał(a)bym raczej współpracować z innymi, niż z nimi rywalizować.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 22,
+            "question" : "Lubię mieć wielu ludzi wokół siebie.",
+            "requireBy": 4,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 23,
+            "question" : "Łatwo mnie rozśmieszyć.",
+            "requireBy": 4,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 24,
+            "question" : "Często czuję, że rozpiera mnie energia.",
+            "requireBy": 4,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 25,
+            "question" : "Uważam się za dobrego przywódcę.",
+            "requireBy": 1,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 26,
+            "question" : "Moje życie przebiega w dużym tempie.",
+            "requireBy": 4,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 27,
+            "question" : "Nie lubię tracić czasu na marzenia.",
+            "revert": true,
+            "revertRequireBy": 6,
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 28,
+            "question" : "Gdy raz znajdę właściwy sposób na robienie czegoś, trzymam się go.",
+            "revert": true,
+            "revertRequireBy": 6,
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 29,
+            "question" : "Często próbuję nowych i egzotycznych potraw.",
+            "requireBy": 6,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 30,
+            "question" : "Rzadko dostrzegam nastroje lub uczucia płynące z otoczenia.",
+            "revert": true,
+            "revertRequireBy": 2,
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 31,
+            "question" : "Staram się być uprzejmy(a) dla każdego, kogo spotykam.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 32,
+            "question" : "Często popadam w konflikty ze współpracownikami.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 33,
+            "question" : "Sądzę, że w przyszłości będzie mi się żyło nawet lepiej niż teraz.",
+            "requireBy": 5,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 34,
+            "question" : "Zbyt często, gdy sprawy idą źle, zniechęcam się i czuję się zrezygnowany(a).",
+            "requireBy": 7,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 35,
+            "question" : "Uwielbiam rozmawiać z ludźmi.",
+            "requireBy": 4,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 36,
+            "question" : "Utrzymuję swoje rzeczy w porządku i czystości.",
+            "requireBy": 3,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 37,
+            "question" : "Tracę mnóstwo czasu, zanim zabiorę się do pracy.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 38,
+            "question" : "Kiedy się do czegoś zobowiążę, to zawsze można na mnie polegać.",
+            "requireBy": 3,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 39,
+            "question" : "Nigdy nie przekraczam dozwolonej prędkości prowadząc samochód.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 40,
+            "question" : "Większość ludzi, których znam, lubi mnie.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 41,
+            "question" : "Jestem twardy(a) i nieustępliwy(a) w swoich postawach wobec innych.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 42,
+            "question" : "Jeśli kogoś nie lubię, to daję mu to odczuć.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 43,
+            "question" : "Potrafię skutecznie mobilizować się, aby załatwiać sprawy o czasie.",
+            "requireBy": 3,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 44,
+            "question" : "Potrafię narzucić swoje zdanie innym.",
+            "requireBy": 1,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 45,
+            "question" : "Wierzę, że uda mi się osiągnąć większość z tego, co sobie zaplanowałe(a)m.",
+            "requireBy": 5,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 46,
+            "question" : "Czasami czuję się całkowicie bezwartościowy(a).",
+            "requireBy": 7,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 47,
+            "question" : "Mam jasno sprecyzowane cele i systematycznie pracuję, by je osiągnąć.",
+            "requireBy": 3,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 48,
+            "question" : "Często kłócę się z osobami, które mają odmienne zdanie od mojego",
+            "requireBy": 0,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 49,
+            "question" : "Lubię wszystkich z którymi pracuję.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 50,
+            "question" : "Jestem przekonany(a), że uda mi się zrealizować zadania, których się podjąłem.",
+            "requireBy": 5,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 51,
+            "question" : "Za bardzo przejmuję się problemami innych osób.",
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 52,
+            "question" : "Wolę chodzić własnymi drogami, niż przewodzić innym.",
+            "revert": true,
+            "revertRequireBy": 1,
+            "requireBy": 100,
+            "choices"  : [
+                "Zdecydowanie się nie zgadzam",
+                "Nie zgadzam się",
+                "Nie mam zdania",
+                "Zgadzam się",
+                "Zdecydowanie się zgadzam"
+            ],
+            "answer"   : ""
+        },
+        {
+            "id": 53,
+            "question" : "Z reguły potrafię przekonać ludzi, z którymi współpracuję, do moich pomysłów.",
             "requireBy": 1,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",

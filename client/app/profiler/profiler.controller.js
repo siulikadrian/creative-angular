@@ -42,7 +42,7 @@ angular.module('creativeRecruitmentApp')
 	}
 
   })
-  .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route, $http, $modalOps){
+  .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route, $http, $modalOps, $window){
 
   	function _coutArytmetical(collection){
 
@@ -65,6 +65,8 @@ angular.module('creativeRecruitmentApp')
 
   	var ID;
 
+  	$scope.parts = {};
+
   	UserListSrv.query(function(data){
 
   		ID = $route.current.params.id;
@@ -85,10 +87,12 @@ angular.module('creativeRecruitmentApp')
 			empatia: _coutArytmetical(_.where($scope.questions, {requireBy: 2})),
 			sumiennosc: _coutArytmetical(_.where($scope.questions, {requireBy: 3})),
 			ekstrawersja: _coutArytmetical(_.where($scope.questions, {requireBy: 4})),
-			pozytywne: _coutArytmetical(_.where($scope.questions, {requireBy: 0})),
-			otwartosc: _coutArytmetical(_.where($scope.questions, {requireBy: 1})),
-			niestabilnosc: _coutArytmetical(_.where($scope.questions, {requireBy: 2}))
+			pozytywne: _coutArytmetical(_.where($scope.questions, {requireBy: 5})),
+			otwartosc: _coutArytmetical(_.where($scope.questions, {requireBy: 6})),
+			niestabilnosc: _coutArytmetical(_.where($scope.questions, {requireBy: 7}))
 		};
+
+		_GRAPH();
 	});
 
   	$scope.sendInterpretations = function(){
@@ -121,7 +125,7 @@ angular.module('creativeRecruitmentApp')
   	}
 
   	$scope.generatePdf = function(){
-  		console.log('generate pdf');
+  		$window.print();
   	};
 
   	$scope.currentStrong = "";
@@ -161,7 +165,7 @@ angular.module('creativeRecruitmentApp')
 
   		var graphData = [{
         // Visits
-	        data: [ [6, 1.9], [7, 3.15], [8, 3.5], [9, 2.16], [10, 4.3], [11, 3.78], [12, 5], [13, 1] ],
+	        data: [ [6, $scope.parts.asertywnosc ], [7, $scope.parts.przywodztwo], [8, $scope.parts.empatia], [9, $scope.parts.sumiennosc], [10, $scope.parts.ekstrawersja], [11, $scope.parts.pozytywne], [12, $scope.parts.otwartosc], [13, $scope.parts.niestabilnosc] ],
 	        color: '#000000'
 	    }, {
 	        // Returning Visits
@@ -169,6 +173,8 @@ angular.module('creativeRecruitmentApp')
 	        color: 'red',
 	        points: { radius: 4, fillColor: '#ffffff' }
 	    }];
+
+	    var ticks = ['Asertywność', 'Przwództwo', 'Empatia', 'Sumienność', 'Ekstrawagancja', 'Pozytywne', 'Otwartość', 'Niestabilność'];
 
 	    $.plot($('#graph-lines'), graphData, {
 		    series: {
@@ -188,11 +194,12 @@ angular.module('creativeRecruitmentApp')
 		        hoverable: true
 		    },
 		    xaxis: {
-		        tickColor: 'transparent',
-		        tickDecimals: 2
+		        tickColor: '#000000',
+		        tickDecimals: 2,
+		        ticks: ticks
 		    },
 		    yaxis: {
-		        tickSize: 1
+		        min:0, max: 6,  tickSize: 1
 		    }
 		});
 
@@ -223,39 +230,81 @@ angular.module('creativeRecruitmentApp')
 
 		$('#graph-bars').hide();
 
-		$('#lines').on('click', function (e) {
-		    $('#bars').removeClass('active');
-		    $('#graph-bars').fadeOut();
-		    $(this).addClass('active');
-		    $('#graph-lines').fadeIn();
-		    e.preventDefault();
-		});
+		var previousPoint = null, previousLabel = null;
 
-		$('#bars').on('click', function (e) {
-		    $('#lines').removeClass('active');
-		    $('#graph-lines').fadeOut();
-		    $(this).addClass('active');
-		    $('#graph-bars').fadeIn().removeClass('hidden');
-		    e.preventDefault();
-		});
 
-		function showTooltip(x, y, contents) {
+		$.fn.UseTooltip = function () {
+		    $(this).bind("plothover", function (event, pos, item) {
+		        if (item) {
+		            if ((previousLabel != item.series.label) || (previousPoint != item.dataIndex)) {
+		                previousPoint = item.dataIndex;
+		                previousLabel = item.series.label;
+		                $("#tooltip").remove();
+
+		                var x = item.datapoint[0];
+		                var y = item.datapoint[1];
+
+		                var color = '#000000';
+		                var month = new Date(x).getMonth();
+
+		                //console.log(item);
+
+		                if (item.seriesIndex == 0) {
+		                    showTooltip(item.pageX,
+		                            item.pageY,
+		                            color,
+		                            "<strong>" + y + "</strong>");
+		                } else {
+		                    showTooltip(item.pageX,
+		                            item.pageY,
+		                            color,
+		                            "<strong>" + y + "</strong>");
+		                }
+		            }
+		        } else {
+		            $("#tooltip").remove();
+		            previousPoint = null;
+		        }
+		    });
+		};
+
+		function showTooltip(x, y, color, contents) {
 		    $('<div id="tooltip">' + contents + '</div>').css({
-		        top: y - 16,
-		        left: x + 20
-		    }).appendTo('body').fadeIn();
+		        position: 'absolute',
+		        display: 'none',
+		        top: y +10,
+		        left: x+10,
+		        border: '2px solid ' + color,
+		        padding: '3px',
+		        'font-size': '12px',
+		        'border-radius': '5px',
+		        'background-color': '#fff',
+		        'color': '#000',
+		        'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+		        opacity: 0.9
+		    }).appendTo("body").fadeIn(200);
 		}
 
 		var previousPoint = null;
+		$("#graph-wrapper").UseTooltip();
 
 
   	}
-
-  	_GRAPH();
-
-
   })
-  .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps, Auth) {
+  .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps, Auth, UserListSrv) {
+
+  	if($rootScope.currentUser.role === 'client'){
+
+  		UserListSrv.query(function(data){
+  			$scope.clientUsers = [];
+
+  			angular.forEach(data, function(value, key){
+  				if(value.user[0].client === $rootScope.currentUser.client) $scope.clientUsers.push(value);
+  			});
+			
+		});
+
+  	}
 
   	function logout(){
 
@@ -304,8 +353,6 @@ angular.module('creativeRecruitmentApp')
 
   		});
 
-  		console.log(arrAns, 'arrAns');
-
   		if(arrAns.length === 1) $scope.hideNext = true;
 
   	}
@@ -334,6 +381,26 @@ angular.module('creativeRecruitmentApp')
 
 	}
 
+	function _invertAnswerValue(answerValue) {
+		switch(answerValue){
+			case "0":
+				return "4";
+				break;
+			case "1":
+				return "3";
+				break;
+			case "2":
+				return "2";
+				break;
+			case "3":
+				return "1";
+				break;
+			case "4":
+				return "0";
+				break;
+		}
+	}
+
 	$scope.profilerFrom = function(){
 
 		if($scope.currentQuestion.answer === "") {
@@ -354,6 +421,15 @@ angular.module('creativeRecruitmentApp')
 				answer: value.answer,
 				requireBy: value.requireBy
 			}
+			if(value.revert){
+				resultToSend.result[key + 60] = {
+					id: value.id + 100,
+					reverted: true,
+					question: value.question,
+					answer: _invertAnswerValue(value.answer),
+					requireBy: value.revertRequireBy
+				}
+			}
 		});
 
 		$rootScope.resultToSend = resultToSend;
@@ -368,6 +444,7 @@ angular.module('creativeRecruitmentApp')
 		$rootScope.resultToSend.user._id = $rootScope.currentUser._id;
 		$rootScope.resultToSend.user.name = $rootScope.currentUser.name;
 		$rootScope.resultToSend.user.email = $rootScope.currentUser.email;
+		$rootScope.resultToSend.user.client = $rootScope.currentUser.client;
 		$rootScope.resultToSend.user.interpetation = {};
 
 		$rootScope.resultToSend.user.isInterpreted = false;

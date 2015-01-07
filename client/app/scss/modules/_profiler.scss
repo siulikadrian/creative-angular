@@ -257,8 +257,8 @@
 
 .answers-list {
 	
-	-webkit-columns: 2;
-	columns: 2;
+	-webkit-columns: 4;
+	columns: 4;
 
 }
 
@@ -269,6 +269,29 @@
 
 }
 
+
+//print options
+
+@media print {
+	
+	body {
+		border-top: 0;
+	}
+
+    .hide__print {
+    	display: none;
+    	height: 0;
+    	visibility: hidden;
+    }
+
+    .graph-container {
+    	margin: 0 !important; 
+    }
+
+    .data__description {
+    	margin-left: 20px !important;
+    }
+}
 
 
 
@@ -310,7 +333,7 @@ graph-container, #tooltip, .graph-info a {
 .graph-container {
     position: relative;
     width: 1000px;
-    height: 300px;
+    height: 500px;
     padding: 20px;
 
     margin: 0 auto;
@@ -418,13 +441,22 @@ graph-container, #tooltip, .graph-info a {
 .yAxis .tickLabel:first-child,
 .yAxis .tickLabel:last-child { display: none; }
 
-.xAxis .tickLabel {
-	display: none;
-}
-
 #tooltip {
     position: absolute;
     display: none;
     padding: 5px 10px;
     border: 1px solid #e1e1e1;
+}
+
+.data__description {
+	margin-left: 92px;
+margin-top: -70px;
+margin-bottom: 70px;
+
+	& > .col-xs-1 {
+		width: 130px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 14px;
+	}
 }

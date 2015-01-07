@@ -110,7 +110,7 @@
 				</div>
 
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-3 hide__print">
 
 				<div class="single-user-header text-center">
 					Odpowiedzi
@@ -126,7 +126,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-4 hide__print">
 
 				<div class="single-user-header text-right">
 					Wyniki
@@ -191,7 +191,7 @@
 			</div>
 		</div>
 
-		<hr>
+		<br>
 		
 		<div class="data-present">
 
@@ -208,6 +208,34 @@
 			        <div id="graph-lines"></div>
 			        <div id="graph-bars"></div>
 			    </div>
+			</div>
+
+			<div class="data__description">
+				<div class="col-xs-1" style="display: inline-block;">
+					Asertywność
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Przywództwo
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Empatia
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Sumienność
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Ekstrawersja
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Pozytywne <br/> myślenie
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Otwartość na <br/> doświadczenie
+				</div>
+				<div class="col-xs-1" style="display: inline-block;">
+					Niestabilność <br/> emocjonalna
+				</div>
+				
 			</div>
 
 		</div>
@@ -281,19 +309,19 @@
 					Mocne strony
 				</div>
 
-				<div class="form-group input-cr">
+				<div class="form-group input-cr hide__print">
 					<input ng-model="currentStrong" type="text" class="form-control">
 				</div>
 
 				<div class="conclusion">
 
 					<ul>
-						<li ng-repeat="item in interpetation.strongSite">{{item}} <span style="font-weight: bold; cursor: pointer;" class="remove-item" ng-click="removeFromArray(interpetation.strongSite, $index)"> X</span></li>
+						<li ng-repeat="item in interpetation.strongSite">{{item}} <span style="font-weight: bold; cursor: pointer;" class="remove-item hide__print" ng-click="removeFromArray(interpetation.strongSite, $index)"> X</span></li>
 					</ul>
 
 				</div>
 
-				<button class="button-cr" ng-click="addStrongSite()">
+				<button class="button-cr hide__print" ng-click="addStrongSite()">
 					<span class="hover-bg">
 						<span class="hover-text">
 							Dodaj
@@ -309,19 +337,19 @@
 					Słabe strony
 				</div>
 
-				<div class="form-group input-cr">
+				<div class="form-group input-cr hide__print">
 					<input ng-model="currentWrong" type="text" class="form-control">
 				</div>
 
 				<div class="conclusion">
 
 					<ul>
-						<li ng-repeat="item in interpetation.wrongSite">{{item}} <span style="font-weight: bold; cursor: pointer;" class="remove-item" ng-click="removeFromArray(interpetation.wrongSite, $index)"> X</span></li>
+						<li ng-repeat="item in interpetation.wrongSite">{{item}} <span style="font-weight: bold; cursor: pointer;" class="remove-item hide__print" ng-click="removeFromArray(interpetation.wrongSite, $index)"> X</span></li>
 					</ul>
 
 				</div>
 
-				<button class="button-cr" ng-click="addWrongSite()">
+				<button class="button-cr hide__print" ng-click="addWrongSite()">
 					<span class="hover-bg">
 						<span class="hover-text">
 							Dodaj
@@ -337,19 +365,19 @@
 					Rekomendacje
 				</div>
 
-				<div class="form-group input-cr">
+				<div class="form-group input-cr hide__print">
 					<input ng-model="currentRecomend" type="text" class="form-control">
 				</div>
 
 				<div class="conclusion">
 
 					<ul>
-						<li ng-repeat="item in interpetation.recomend">{{item}} <span style="font-weight: bold; cursor: pointer;" class="remove-item" ng-click="removeFromArray(interpetation.recomend, $index)"> X</span></li>
+						<li ng-repeat="item in interpetation.recomend">{{item}} <span style="font-weight: bold; cursor: pointer;" class="remove-item hide__print" ng-click="removeFromArray(interpetation.recomend, $index)"> X</span></li>
 					</ul>
 
 				</div>
 
-				<button class="button-cr" ng-click="addRecomend()">
+				<button class="button-cr hide__print" ng-click="addRecomend()">
 					<span class="hover-bg">
 						<span class="hover-text">
 							Dodaj
@@ -364,7 +392,7 @@
 
 		<br/>
 
-		<div style="text-align: center;">
+		<div class="hide__print" style="text-align: center;">
 			<button style="display: inline-block;" class="button-cr" ng-click="sendInterpretations()">
 				<span class="hover-bg">
 					<span class="hover-text">
@@ -386,10 +414,10 @@
 			<button style="display: inline-block;" class="button-cr" ng-click="generatePdf()">
 				<span class="hover-bg">
 					<span class="hover-text">
-						Wygeneruj PDF
+						Drukuj
 					</span>
 				</span>
-				Wygeneruj PDF
+				Drukuj
 			</button>
 		</div>
 

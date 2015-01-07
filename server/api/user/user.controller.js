@@ -47,9 +47,7 @@ exports.index = function(req, res) {
 exports.create = function (req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
-  newUser.role = 'user';
   newUser.password = generatePassword(12, false);
-  console.log('user password', newUser.password);
   newUser.save(function(err, user) {
     console.log(err, user);
     if (err) return validationError(res, err);
@@ -69,7 +67,6 @@ exports.create = function (req, res, next) {
         res.send('There was an error sending the email', err);
         return;
       }
-      console.log('email send success');
       res.send(message);
     });
   });
@@ -125,7 +122,6 @@ exports.changeInterpretationStatus = function(req, res, next) {
   var userId = req.user._id;
 
   User.findById(userId, function(err, user){
-    console.log('user', user);
     user.isInterpreted = true;
     user.save(function(err){
       if(err) return validationError(res,err);
@@ -140,7 +136,6 @@ exports.changeAnswerStatus = function(req, res, next) {
   var userId = req.user._id;
 
   User.findById(userId, function(err, user){
-    console.log('user', user);
     user.isAnswerd = true;
     user.save(function(err){
       if(err) return validationError(res,err);

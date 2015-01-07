@@ -159,7 +159,7 @@ angular.module('creativeRecruitmentApp')
                           Auth.createUser({
                             name: $scope.user.name,
                             email: $scope.user.email,
-                            role: $scope.user.role,
+                            role: 'user',
                             client: $scope.user.client
                           })
                             .then( function(data) {
@@ -190,7 +190,7 @@ angular.module('creativeRecruitmentApp')
                 opts = angular.extend({}, {
                     size: 'md',
                     templateUrl: 'components/modals/modalAddCompany.html',
-                    controller: function ($scope, $modalInstance, ProfilerCompanySrv) {
+                    controller: function ($scope, $modalInstance, ProfilerCompanySrv, Auth) {
 
                         $scope.newCompany = {};
 
@@ -210,15 +210,33 @@ angular.module('creativeRecruitmentApp')
 
                             ProfilerCompanySrv.save($scope.newCompany, function(data){
 
-                                $scope.cancel();
-                                $scope.newCompany = {};
+                                Auth.createUser({
+                                    name: $scope.newCompany.name,
+                                    email: $scope.newCompany.email,
+                                    role: 'client',
+                                    client: data._id
+                                  })
+                                .then( function(data) {
+                                    $scope.cancel();
+                                    $scope.newCompany = {};
+
+                                    console.log(data);
+                                })
+                                .catch( function(err) {
+                                  err = err.data;
+                                  $scope.errors = {};
+
+                                  // Update validity of form fields that match the mongoose errors
+                                  angular.forEach(err.errors, function(error, field) {
+                                    form[field].$setValidity('mongoose', false);
+                                    $scope.errors[field] = error.message;
+                                  });
+                                });        
 
                             }, function(data, error, config, header){
                                 alert('Wystąpił błąd w zapisie nowego klienta.', data, error, config, header);
-                            });
-
+                            }); 
                         }
-
                     }
                 });
 

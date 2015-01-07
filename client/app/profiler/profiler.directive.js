@@ -28,4 +28,37 @@ angular.module('creativeRecruitmentApp')
       }
     }
 
+  })
+  .directive('detalisInfo', function(){
+
+    return {
+
+      restrict: 'E',
+      templateUrl: 'app/profiler/dctvTpl/detalisInfo.html',
+      scope: {
+        data: "@"
+      },
+      controller: function($scope){    
+
+          $scope.detalisInfoShow = false;
+
+          $scope.showDetalis = function(){
+
+              console.log($scope.detalisData);
+
+              if($scope.detalisInfoShow) {
+                $scope.detalisInfoShow = false;
+              } else {
+                $scope.detalisInfoShow = true;
+              }
+          };
+
+      },
+      link: function(scope, element, attr, ctrl){
+
+        scope.detalisData = attr.data;
+
+      }
+    }
+
   });

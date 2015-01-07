@@ -7922,9 +7922,6 @@ graph-container, #tooltip, .graph-info a {
 .yAxis .tickLabel:last-child {
   display: none; }
 
-.xAxis .tickLabel {
-  display: none; }
-
 #tooltip {
   position: absolute;
   display: none;
