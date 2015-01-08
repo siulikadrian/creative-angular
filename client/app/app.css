@@ -7967,8 +7967,7 @@ graph-container, #tooltip, .graph-info a {
   top: 50px; }
   .nav-profiler .profiler__logo__center .profiler__logo--item {
     height: 38px;
-    width: 200px;
-    background: black; }
+    width: 200px; }
 .nav-profiler .logo-cr {
   opacity: 0.2;
   filter: alpha(opacity=20);
