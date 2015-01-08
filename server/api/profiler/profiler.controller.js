@@ -73,8 +73,7 @@ exports.updateIsInterpreted = function(req, res) {
 
   Profiler.findById(req.params.id, function(err, user){
 
-    var us = user;
-    console.log('us', us);
+    var us = JSON.parse(JSON.stringify(user));
     us.user[0].isInterpreted = true;
     user.user = [];
     console.log(us);

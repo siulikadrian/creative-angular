@@ -25,7 +25,6 @@ angular.module('creativeRecruitmentApp')
           });
       }
     }
-
   })
   .controller('ProfilerListController', function ($scope, $http, UserListSrv, $modalOps) {
 
@@ -40,6 +39,11 @@ angular.module('creativeRecruitmentApp')
 	$scope.addCompany = function(){
 		$modalOps.addCompany();
 	}
+
+	$scope.statusReturner = function(status){
+  		return status ? "Udostępniony" : "W oczekiwaniu";
+  	}
+
 
 
   })
@@ -235,6 +239,7 @@ angular.module('creativeRecruitmentApp')
   })
   .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route, $http, $modalOps, $window){
 
+  	
   	function _coutArytmetical(collection){
 
   		var arytmetical = 0;
@@ -487,13 +492,21 @@ angular.module('creativeRecruitmentApp')
   })
   .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps, Auth, UserListSrv) {
 
+  	console.log($rootScope);
+
   	$scope.statusReturner = function(status){
   		return status ? "Zinterpretowany" : "Oczekuje na interpretację";
   	}
 
-  	if($rootScope.currentUser.role === 'client'){
+  	$scope.logout = function(){
+  		logout();
+  		$location.path('/profiler/login');
+  	}
 
-  		UserListSrv.query(function(data){
+  	
+
+		UserListSrv.query(function(data){
+  			if(!$rootScope.currentUser.role === 'client') return;
   			$scope.clientUsers = [];
 
   			angular.forEach(data, function(value, key){
@@ -501,8 +514,7 @@ angular.module('creativeRecruitmentApp')
   			});
 			
 		});
-
-  	}
+  	
 
   	function logout(){
 

@@ -29,6 +29,36 @@ angular.module('creativeRecruitmentApp')
     }
 
   })
+  .directive('navControllDctv', function(){
+
+    return {
+      restrict: 'A',
+      controller: function($scope, $rootScope, $location){
+
+        $rootScope.$on('$routeChangeStart', function (event, next) {
+              $scope.currentPath = next.$$route.originalPath;
+        });
+
+       // console.log($location.$$path);
+        console.log('nac controll dctv');
+      },
+      link: function(scope, element, attr, model){
+
+        scope.$watch('currentPath', function(newvalue, value){
+            console.log(newvalue);
+            if(newvalue){
+                if(newvalue.indexOf("profiler") > -1){
+                  if(element.hasClass('nav-profiler')) return;
+                  element.addClass('nav-profiler');
+                } else {
+                  element.removeClass('nav-profiler');
+                }
+            }
+        });
+      }
+    }
+
+  })
   .directive('detalisInfo', function(){
 
     return {

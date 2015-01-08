@@ -24,11 +24,8 @@
 		„4” gdy się ZGADZASZ lub gdy to stwierdzenie jest raczej trafne,
 
 		„5” gdy się ZDECYDOWANIE ZGADZASZ lub gdy to stwierdzenie jest całkowicie trafne.
-
 		Zakreśl tylko jedną odpowiedź przy każdym stwierdzeniu. 
-
 		Ustosunkuj się do wszystkich stwierdzeń.
-
 		Jeśli się pomylisz, wyraźnie przekreśl pierwszą odpowiedź i zaznacz właściwą.
 
 	</div>
@@ -45,6 +42,16 @@
 </div>
 
 <div class="profiler-wrapper" ng-if="currentUser.role === 'client'">
+	<br>
+
+	<button style="margin:0;" class="button-cr" ng-click="logout()">
+		<span class="hover-bg">
+			<span class="hover-text">
+			Wyloguj się</span>
+		</span>
+		Wyloguj się
+	</button>
+
 	<br>
 	<div class="profiler-list-header">
 
@@ -70,7 +77,7 @@
 
 				</div>
 	<ul class="list-items">
-		<a ng-if="item.user[0].isInterpreted" href="/profiler/client/user/{{item._id}}" class="list-item" ng-repeat="item in clientUsers">
+		<a ng-if="item.user[0].isInterpreted"  href="/profiler/client/user/{{item._id}}" class="list-item" ng-repeat="item in clientUsers">
 			<div class="row">
 				<li>
 					<div class="col-xs-3 name">
@@ -89,7 +96,8 @@
 				</li>
 			</div>
 		</a>
-		<div ng-if="!item.user[0].isInterpreted" ng-repeat="item in clientUsers" class="row">
+		<div style="cursor: default;" ng-if="!item.user[0].isInterpreted" class="list-item" ng-repeat="item in clientUsers">
+			<div class="row">
 				<li>
 					<div class="col-xs-3 name">
 						{{item.user[0].name}}
@@ -106,5 +114,6 @@
 					</div>
 				</li>
 			</div>
+		</div>
 	</ul>
 </div>

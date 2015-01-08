@@ -462,3 +462,41 @@ margin-bottom: 70px;
 		line-height: 14px;
 	}
 }
+
+/*style menu when it is profiler page*/
+
+.profiler__logo__center {
+	display: none;
+}
+
+.nav-profiler {
+	
+	.navigation {
+		display: none;
+	}
+
+	.profiler__logo__center {
+		display: block;
+
+		position: absolute;
+		left: 50%;
+		margin-left: -100px;
+		top: 50px;
+
+		.profiler__logo--item{
+
+			height: 38px;
+			width: 200px;
+			background: black;
+		}
+	}
+
+	.logo-cr {
+		@include opacity(0.2);
+		@include transition-property(opacity);
+		@include transition-duration(0.1s);
+		&:hover {
+			@include opacity(1);
+		}
+	}
+}
