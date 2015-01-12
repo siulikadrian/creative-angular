@@ -11,14 +11,14 @@ var app = express();
 var nodemailer = require('express-mailer');
 
 nodemailer.extend(app, {
-  from: 'profiler.profiler@onet.pl',
-  host: 'smtp.poczta.onet.pl', // hostname
+  from: 'asiulik@180hb.com',
+  host: 'smtp.gmail.com', // hostname
   secureConnection: true, // use SSL
   port: 465, // port for secure SMTP
   transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
   auth: {
-    user: 'profiler.profiler@onet.pl',
-    pass: 'profiler123'
+    user: 'asiulik@180hb.com',
+    pass: '!adrians!'
   }
 });
 
@@ -72,9 +72,6 @@ exports.create = function (req, res, next) {
   });
 };
 
-/**
- * Get a single user
- */
 exports.show = function (req, res, next) {
   var userId = req.params.id;
 
