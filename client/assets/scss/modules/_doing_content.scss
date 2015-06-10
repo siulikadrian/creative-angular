@@ -1,0 +1,27 @@
+.doing-content {
+	
+	font-family: "Cantarell-Regular-webfont";
+	font-size: 13px;
+	line-height: 22px;
+	text-align: justify;
+	
+	.content-doing {
+		margin-top: 100px;
+		margin: 0 auto;
+		width: 590px;
+		text-align: justify;
+
+
+		p{
+			margin-top: 15px;
+			text-align: justify;
+
+			&.lastp {
+				margin-top: 0;
+			}
+		}
+
+	}
+
+
+}

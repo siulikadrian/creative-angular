@@ -11,16 +11,16 @@ var app = express();
 var nodemailer = require('express-mailer');
 
 nodemailer.extend(app, {
-  from: 'asiulik@180hb.com',
-  host: 'smtp.gmail.com', // hostname
-  secureConnection: true, // use SSL
-  port: 465, // port for secure SMTP
+  from: 'badanie@e-profiler.com.pl',
+  host: 'e-profiler.com.pl', // hostname
+  port: 587, // port for secure SMTP
   transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
   auth: {
-    user: 'asiulik@180hb.com',
-    pass: '!adrians!'
+    user: 'badanie@e-profiler.com.pl',
+    pass: 'OTC2010pro-filer#3000.Goog'
   }
 });
+
 
 app.set('views', config.root + '/server/views');
 app.engine('ejs', require('ejs').renderFile);

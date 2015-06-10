@@ -12,7 +12,7 @@
 		a{
 			display: block;
 			text-indent: -999em;
-			background: url('../images/logo-cr.png') no-repeat top left;
+			background: url('/images/logo-cr.png') no-repeat top left;
 			width: 200px;
 			height: 78px;
 		}
@@ -129,7 +129,7 @@
 							text-decoration: none;
 							color: #000;
 							text-transform: uppercase;
-							margin-right: 37px;
+							margin-right: 88px;
 							&:hover{
 								border-bottom: 5px solid #000;
 							}

@@ -14,7 +14,7 @@
     @include transition-property(width);
     @include transition-duration(0.3s);
 
-    width: 20px;
+    width: 110px;
 
     &:hover {
 
@@ -32,6 +32,4 @@
     }
 
   }
-
-
 }

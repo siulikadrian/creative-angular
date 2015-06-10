@@ -1,0 +1,19 @@
+<div>	
+	<div class="single-user-header">Dokładne odpowiedzi użytkownika: {{user.name}}</div>	
+	<div ng-repeat="question in questions">
+		<span ng-if="question.id < 100">
+			<span>{{question.question}}</span> -  <span><b>{{1*question.answer + 1}}</b></span>	
+		</span>
+	</div>
+
+	<br>
+
+	<button style="display: inline-block;" class="button-cr hide__print" ng-click="generatePdf()">
+		<span class="hover-bg">
+			<span class="hover-text">
+				Drukuj
+			</span>
+		</span>
+		Drukuj
+	</button>
+</div>

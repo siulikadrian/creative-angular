@@ -6,7 +6,7 @@
 		<form name="form" class="css-form form-horizontal" novalidate>
 
 			<div class="form-group">
-				<div class="form-header">Płeć:</div> 
+				<div class="form-header">Płeć:</div>
 				<div>
 					<input type="radio" id="gender-male" ng-model="userInfo.gender" value="Mężczyzna" />
 					<label for="gender-male">Mężczyzna</label>
@@ -22,9 +22,9 @@
 		    	<input class="form-control" type="number" ng-model="userInfo.year" name="uAge" required />
 			</div>
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 
-				<div class="form-header">Stan cywilny:</div> 
+				<div class="form-header">Stan cywilny:</div>
 				<div>
 		    		<input type="radio" id="status-free" ng-model="userInfo.status" value="kawaler/panna" />
 		    		<label for="status-free">kawaler/panna</label>
@@ -37,12 +37,12 @@
 		    		<input type="radio" id="status-another" ng-model="userInfo.status" value="Inne" />
 		    		<label for="status-another">Inne</label>
 		    	</div>
-				
-			</div>
+
+			</div> -->
 
 			<div class="form-group">
-				
-				<div class="form-header">Formalna nazwa stanowiska pracy:</div> 
+
+				<div class="form-header">Formalna nazwa stanowiska pracy:</div>
 				<div>
 			    	<input type="radio" id="job1" ng-model="userInfo.job" value="Właściciel/prezes/dyrektor zarządzający" />
 			    	<label for="job1">Właściciel/prezes/dyrektor zarządzający</label>
@@ -63,7 +63,7 @@
 			</div>
 
 			<div class="form-group">
-				<div class="form-header">Praca w:</div> 
+				<div class="form-header">Praca w:</div>
 				<div>
 			    	<input type="radio" id="job-area-1" ng-model="userInfo.jobArea" value="Sprzedaży i/lub obsłudze klienta" />
 			    	<label for="job-area-1">Sprzedaży i/lub obsłudze klienta</label>
@@ -83,16 +83,16 @@
 				<div>
 					<label>W obecnej firmie</label>
 					<input  class="form-control" type="number" ng-model="userInfo.actualWrokYear" name="actualWrokYear" required />
-				</div> 
+				</div>
 				<div>
 					<label>Licząc łącznie</label>
 					<input  class="form-control" type="number" ng-model="userInfo.wrokYear" name="wrokYear" required />
-				</div> 
+				</div>
 			</div>
 
 			<div class="form-group">
-				
-				<div class="form-header">Wyniki sprzedażowe w obecnej pracy w ostatnim roku (na tle innych osób w firmie):</div> 
+
+				<div class="form-header">Wyniki sprzedażowe w obecnej pracy w ostatnim roku (na tle innych osób w firmie):</div>
 				<div>
 			    	<input type="radio" id="achieve-1" ng-model="userInfo.achieve" value="Zdecydowanie lepsze" />
 			    	<label for="achieve-1">Zdecydowanie lepsze</label>
@@ -113,6 +113,10 @@
 			    	<input type="radio" id="achieve-5" ng-model="userInfo.achieve" value="Zdecydowanie gorsze" />
 			    	<label for="achieve-5">Zdecydowanie gorsze</label>
 		    	</div>
+        <div>
+          <input type="radio" id="achieve-6" ng-model="userInfo.achieve" value="Nie dotyczy" />
+          <label for="achieve-6">Nie dotyczy</label>
+        </div>
 			</div>
 		</form>
 	</div>

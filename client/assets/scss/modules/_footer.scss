@@ -41,34 +41,39 @@
 		position: relative;
 		right: 5px;
 		float: right;
-		top: -30px;
+		top: 3px;
+		width: 120px;
+		height: 40px;
+		text-align: center;
 		
 
 		a{
+
 			display: inline-block;
 			width: 33px;
 			height: 33px;
 			position: absolute;
+			border: 2px solid #fff;
+			border-radius: 50%;
+			padding-top: 5px;
+			color: #fff;
+			text-decoration: none;
+
+			&:hover {
+				transition: background 0.5s;
+				color: #000;
+				background: #fff;
+				font-weight: bold;
+			}
 
 			&.facebook {
-				@include social-sprite(Facebook-off);
-				&:hover {
-					@include social-sprite(Facebook-on);
-				}
-			}	
+				right: 80px;
+			}		
 			&.linked {
-				@include social-sprite(Facebook-off);
-
-				&:hover {
-					@include social-sprite(Facebook-on);
-				}
+				right: 40px;
 			}		
 			&.twitter {
-				@include social-sprite(Facebook-off);
-
-				&:hover {
-					@include social-sprite(Facebook-on);
-				}
+				right: 0px;
 			}			
 
 		}

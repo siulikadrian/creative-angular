@@ -129,7 +129,7 @@
 							text-decoration: none;
 							color: #000;
 							text-transform: uppercase;
-							margin-right: 37px;
+							margin-right: 56px;
 							&:hover{
 								border-bottom: 5px solid #000;
 							}
@@ -139,15 +139,12 @@
 						border-bottom: 5px solid #000;
 					}
 
-					&.lastLink {
-
+					&:last-child {
 						a{
-
 							margin-right: 0;
-
 						}
-
 					}
+
 
 				}
 			}

@@ -1,0 +1,185 @@
+.obszar-content {
+	position: relative;
+	font-family: "Cantarell-Regular-webfont";
+
+	.content-obszar{
+		margin-left: 200px;
+		margin-top: 80px;
+	}
+
+	header {
+		width: 484px;
+		margin-left: 262px;
+		margin-top: 30px;
+		padding-bottom: 5px;
+		font-weight: bold;
+		text-transform: uppercase;
+		border-bottom: 2px solid #666;
+		
+	}
+
+	.proc{
+		position: absolute;
+		right: 150px;
+		top: -23px;
+
+		span{
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			border: 2px solid #000;
+			display: block;
+			text-align: center;
+			padding-top: 20px;
+			background: #fff;
+			font-weight: bold;
+		}
+	}
+
+	.content {
+		width: 905px;
+		margin: 10px auto;
+
+		.line{
+			clear: both;
+			margin-bottom: 10px;
+			height: 30px;
+			.header{
+				float: left;
+				width: 230px;
+				text-align: left;
+				margin-top: 5px;
+
+			}
+			.skils{
+				float: left;
+				width: 250px;
+				height:10px;
+				margin-right: 15px;
+				margin-top: 10px;
+				-webkit-animation: width-anim 1s 1s alternate backwards;
+				-moz-animation: width-anim 1s 1s alternate backwards;
+				-o-animation: width-anim 1s 1s alternate backwards;
+				animation: width-anim 1s 1s alternate backwards;
+
+				span{
+					display: block;
+					height: 10px;
+					background: #000;
+
+
+					&.skils-first{
+					width: 48%;
+
+					}
+					&.skils-second{
+					width: 14%;
+
+					}
+					&.skils-third{
+					width: 24%;
+
+					}
+					&.skils-fourth{
+					width: 40%;
+
+					}
+					&.skils-fifth{
+					width: 14%;
+
+					}
+					&.skils-sixth{
+					width: 16%;
+
+					}
+					&.skils-seventh{
+					width: 30%;
+
+					}
+					&.skils-eight{
+					width: 14%;
+
+					}
+				}
+
+			}
+
+			.diagram {
+				float: left;
+
+				.procent {
+					float: left;
+					span{
+						width: 35px;
+						height: 35px;
+						display: block;
+						border: 2px solid #000;
+						text-align: center;
+						padding-top: 8px;
+						font-size: 12px;
+						border-radius: 50%;
+					}
+				}
+
+				.opis {
+					float: left;
+					margin-top: 7px;
+					margin-left: 10px;
+					position: relative;
+
+					ul{
+						padding: 10px;
+						width: 360px;
+						padding-left: 17px;
+						list-style: square;
+						font-size: 12px;
+						float: left;
+						top: 16px;
+						margin-right: -230px;
+						margin-left: -36px;
+						margin-top: 15px;
+						margin-bottom: 15px;
+
+						li{
+							padding: 5px;
+						}
+					}
+					.leftsite {
+						float: left;
+						width: 500px;
+
+						margin-left: -633px;
+						position: static;
+						margin-top: 15px;
+						margin-bottom: 15px;
+
+						li{
+							padding: 5px;
+						}
+					}
+
+					span {
+
+						a{
+							font-style: italic;
+							font-size: 12px;
+							span {
+								display: inline-block;
+								width: 7px;
+								height: 7px;
+								background: url('../images/plus-icon.png') no-repeat 0 0;
+								margin-right: 3px;
+							}
+							color: #000;
+							text-decoration: none;
+						}
+					}
+				}
+			}
+		}
+
+		
+	}
+
+
+}

@@ -23,42 +23,30 @@
 	100%{-webkit-transform:scale(1);transform:scale(1)}
 }
 
-@-webkit-keyframes zoomOutLeft {
-  40% {
-    opacity: 1;
-    -webkit-transform: scale3d(.475, .475, .475) translate3d(42px, 0, 0);
-            transform: scale3d(.475, .475, .475) translate3d(42px, 0, 0);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: scale(.1) translate3d(-2000px, 0, 0);
-            transform: scale(.1) translate3d(-2000px, 0, 0);
-    -webkit-transform-origin: left center;
-            transform-origin: left center;
-  }
+@-webkit-keyframes width-anim {
+	0% {
+		width: 0px;
+	}
+	100%{
+		width: 250px;
+	}
 }
 
-
-@keyframes zoomOutLeft {
-  40% {
-    opacity: 1;
-    -webkit-transform: scale3d(.475, .475, .475) translate3d(42px, 0, 0);
-            transform: scale3d(.475, .475, .475) translate3d(42px, 0, 0);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: scale(.1) translate3d(-2000px, 0, 0);
-            transform: scale(.1) translate3d(-2000px, 0, 0);
-    -webkit-transform-origin: left center;
-            transform-origin: left center;
-  }
+@-moz-keyframes width-anim {
+	0% {
+		width: 0px;
+	}
+	100%{
+		width: 250px;
+	}
 }
 
-.zoomOutLeft {
-  -webkit-animation-name: zoomOutLeft;
-          animation-name: zoomOutLeft;
+@keyframes width-anim {
+	0% {
+		width: 0px;
+	}
+	100%{
+		width: 250px;
+	}
 }
-
 

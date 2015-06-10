@@ -39,13 +39,10 @@ angular.module('creativeRecruitmentApp')
               $scope.currentPath = next.$$route.originalPath;
         });
 
-       // console.log($location.$$path);
-        console.log('nac controll dctv');
       },
       link: function(scope, element, attr, model){
 
         scope.$watch('currentPath', function(newvalue, value){
-            console.log(newvalue);
             if(newvalue){
                 if(newvalue.indexOf("profiler") > -1){
                   if(element.hasClass('nav-profiler')) return;
@@ -73,8 +70,6 @@ angular.module('creativeRecruitmentApp')
           $scope.detalisInfoShow = false;
 
           $scope.showDetalis = function(){
-
-              console.log($scope.detalisData);
 
               if($scope.detalisInfoShow) {
                 $scope.detalisInfoShow = false;

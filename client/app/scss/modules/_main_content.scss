@@ -3,13 +3,20 @@
 	font-family: "Cantarell-Regular-webfont";
 	font-size: 13px;
 	line-height: 22px;
+
+	padding-bottom: 50px;
 	
-	padding-bottom: 40px;
-
 	.content-main {
+		margin: 0 auto;
 		margin-top: 100px;
-		margin-left: 20%;
-		width: 70%;
-	}
+		text-align: justify;
 
+		p{
+			text-align: justify;
+		}
+
+		.lastp {
+			font-weight: bold;
+		}
+	}
 }

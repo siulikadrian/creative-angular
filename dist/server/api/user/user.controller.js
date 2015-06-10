@@ -4,6 +4,27 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var generatePassword = require('password-generator');
+
+var express = require('express');
+var app = express();
+var nodemailer = require('express-mailer');
+
+nodemailer.extend(app, {
+  from: 'badanie@e-profiler.com.pl',
+  host: 'e-profiler.com.pl', // hostname
+  port: 587, // port for secure SMTP
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+  auth: {
+    user: 'badanie@e-profiler.com.pl',
+    pass: 'OTC2010pro-filer#3000.Goog'
+  }
+});
+
+
+app.set('views', config.root + '/server/views');
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -26,17 +47,31 @@ exports.index = function(req, res) {
 exports.create = function (req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
-  newUser.role = 'user';
+  newUser.password = generatePassword(12, false);
   newUser.save(function(err, user) {
+    console.log(err, user);
     if (err) return validationError(res, err);
-    var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
-    res.json({ token: token });
+    /*var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
+    res.json({ token: token });*/
+
+    app.mailer.send('email', {
+      to: newUser.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
+      subject: 'DOSTĘP PROFILER', // REQUIRED.
+      otherProperty: {
+        password: newUser.password
+      } // All additional properties are also passed to the template as local variables.
+    }, function (err, message) {
+      if (err) {
+        // handle error
+        console.log(err);
+        res.send('There was an error sending the email', err);
+        return;
+      }
+      res.send(message);
+    });
   });
 };
 
-/**
- * Get a single user
- */
 exports.show = function (req, res, next) {
   var userId = req.params.id;
 
@@ -77,6 +112,34 @@ exports.changePassword = function(req, res, next) {
       res.send(403);
     }
   });
+};
+
+exports.changeInterpretationStatus = function(req, res, next) {
+
+  var userId = req.user._id;
+
+  User.findById(userId, function(err, user){
+    user.isInterpreted = true;
+    user.save(function(err){
+      if(err) return validationError(res,err);
+      res.send(200);
+    })
+  });
+
+};
+
+exports.changeAnswerStatus = function(req, res, next) {
+
+  var userId = req.user._id;
+
+  User.findById(userId, function(err, user){
+    user.isAnswerd = true;
+    user.save(function(err){
+      if(err) return validationError(res,err);
+      res.send(200);
+    })
+  });
+
 };
 
 /**

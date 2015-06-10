@@ -120,8 +120,12 @@
 					<ul class="answers-list text-center">
 						<li ng-repeat="question in questions">
 
-							<span>{{question.id}}</span> <span><b>{{question.answer}}</b></span>
-
+							<span ng-if="question.id < 100">
+								<span >{{question.id + 1}}</span> <span><b>{{1*question.answer + 1}}</b></span>	
+							</span>
+							<span ng-if="question.id > 100">
+								<span >{{question.id + 1 - 100}}R</span> <span><b>{{question.answer}}</b></span>	
+							</span>
 						</li>
 					</ul>
 				</div>
@@ -184,12 +188,22 @@
 
 						<span>NIESTABILNOŚĆ</span> <b>{{parts.niestabilnosc}}</b>
 						
-
 					</div>
 				</div>
 
 			</div>
 		</div>
+
+		<br>
+
+		<a style="width: 210px; display: block;" class="button-cr hide__print" href="/profiler/userprint/{{ID}}">
+			<span class="hover-bg">
+				<span style="padding-left: 15px;" class="hover-text">
+					Dokładne odpowiedzi
+				</span>
+			</span>
+			Dokładne odpowiedzi
+		</a>
 
 		<br>
 		

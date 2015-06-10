@@ -84,7 +84,7 @@
         },
         {
             "id": 6,
-            "question" : "Często czuję się napięty(a) i zdenerwowany(a)",
+            "question" : "Często czuję się napięty(a) i zdenerwowany(a).",
             "requireBy": 7,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",
@@ -642,7 +642,7 @@
         },
         {
             "id": 48,
-            "question" : "Często kłócę się z osobami, które mają odmienne zdanie od mojego",
+            "question" : "Często kłócę się z osobami, które mają odmienne zdanie od mojego.",
             "requireBy": 0,
             "choices"  : [
                 "Zdecydowanie się nie zgadzam",

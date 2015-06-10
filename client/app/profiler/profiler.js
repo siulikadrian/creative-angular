@@ -44,5 +44,10 @@ angular.module('creativeRecruitmentApp')
         templateUrl: 'app/profiler/profiler.user.html',
         controller: 'ProfilerSingleUser',
         isAdmin: true
+      })
+      .when('/profiler/userprint/:id', {
+        templateUrl: 'app/profiler/profiler.userprint.html',
+        controller: 'ProfilerSingleUser',
+        isAdmin: true
       });
   });

@@ -18,7 +18,7 @@ angular.module('creativeRecruitmentApp')
           .then(function (data) {
             console.log('login' + data);
             // Logged in, redirect to home
-            $location.path('/');
+            $location.path('/profiler');
           })
           .catch(function (err) {
             $scope.errors.other = err.message;
@@ -63,7 +63,7 @@ angular.module('creativeRecruitmentApp')
 
 
   	$scope.removeFromArray = function(arr, index) {
-  		
+
   		arr.splice(index, 1);
   		console.log(arr, index);
 
@@ -75,18 +75,17 @@ angular.module('creativeRecruitmentApp')
 
   	UserListSrv.query(function(data){
 
-  		console.log('user list query', data);
 
   		ID = $route.current.params.id;
 		$scope.data = _.findWhere(data, {_id: ID});
 		$scope.user = $scope.data.user[0];
 		$scope.questions = _.sortBy($scope.data.result[0], 'id');
 
-		console.log($scope.data);
+	
 		$scope.interpetation = $scope.data.interpretation[0] || {};
 
 		if(!$scope.interpetation.strongSite) $scope.interpetation.strongSite = [];
-		if(!$scope.interpetation.wrongSite) $scope.interpetation.wrongSite = [];  
+		if(!$scope.interpetation.wrongSite) $scope.interpetation.wrongSite = [];
 		if(!$scope.interpetation.recomend) $scope.interpetation.recomend = [];
 
 		$scope.parts = {
@@ -239,7 +238,7 @@ angular.module('creativeRecruitmentApp')
   })
   .controller('ProfilerSingleUser', function ($scope, UserListSrv, $route, $http, $modalOps, $window){
 
-  	
+
   	function _coutArytmetical(collection){
 
   		var arytmetical = 0;
@@ -253,31 +252,28 @@ angular.module('creativeRecruitmentApp')
   	}
 
   	$scope.removeFromArray = function(arr, index) {
-  		
+
   		arr.splice(index, 1);
-  		console.log(arr, index);
+  		
 
   	}
-
-  	var ID;
 
   	$scope.parts = {};
 
   	UserListSrv.query(function(data){
 
-  		console.log('user list query', data);
 
-  		ID = $route.current.params.id;
-		$scope.data = _.findWhere(data, {_id: ID});
-		console.log($scope.data);
+  		$scope.ID = $route.current.params.id;
+
+		$scope.data = _.findWhere(data, {_id: $scope.ID});
+
 		$scope.user = $scope.data.user[0];
 		$scope.questions = _.sortBy($scope.data.result[0], 'id');
 
-		console.log($scope.data);
 		$scope.interpetation = $scope.data.interpretation[0] || {};
 
 		if(!$scope.interpetation.strongSite) $scope.interpetation.strongSite = [];
-		if(!$scope.interpetation.wrongSite) $scope.interpetation.wrongSite = [];  
+		if(!$scope.interpetation.wrongSite) $scope.interpetation.wrongSite = [];
 		if(!$scope.interpetation.recomend) $scope.interpetation.recomend = [];
 
 		$scope.parts = {
@@ -296,9 +292,9 @@ angular.module('creativeRecruitmentApp')
 
   	$scope.sendInterpretations = function(){
 
-  		console.log($scope.interpetation);
 
-  		$http.put('/api/profiler/' + ID, {interpetation: $scope.interpetation})
+
+  		$http.put('/api/profiler/' + $scope.ID, {interpetation: $scope.interpetation})
   			.success(function(data){
 
   				$modalOps.info('SUKCES', 'Zmiany zostały zapisane');
@@ -311,10 +307,9 @@ angular.module('creativeRecruitmentApp')
 
   	$scope.makePublicProfile = function() {
 
-  		$http.put('/api/profiler/' + ID + '/is-interpreted', {})
+  		$http.put('/api/profiler/' + $scope.ID + '/is-interpreted', {})
 
 		.success(function(data){
-			console.log(data);
 			$modalOps.info('SUKCES', 'Zmiany zostały zapisane');
 
 		})
@@ -492,7 +487,6 @@ angular.module('creativeRecruitmentApp')
   })
   .controller('ProfilerController', function ($scope, $rootScope, $http, $location, $timeout, $modalOps, Auth, UserListSrv) {
 
-  	console.log($rootScope);
 
   	$scope.statusReturner = function(status){
   		return status ? "Zinterpretowany" : "Oczekuje na interpretację";
@@ -503,7 +497,7 @@ angular.module('creativeRecruitmentApp')
   		$location.path('/profiler/login');
   	}
 
-  	
+
 
 		UserListSrv.query(function(data){
   			if(!$rootScope.currentUser.role === 'client') return;
@@ -512,9 +506,9 @@ angular.module('creativeRecruitmentApp')
   			angular.forEach(data, function(value, key){
   				if(value.user[0].client === $rootScope.currentUser.client) $scope.clientUsers.push(value);
   			});
-			
+
 		});
-  	
+
 
   	function logout(){
 
@@ -553,6 +547,12 @@ angular.module('creativeRecruitmentApp')
 		});
   	};
 
+  	$scope.getQuestionIndex = function(questionCollections, currentQuestion){
+
+  		return _.indexOf(questionCollections, currentQuestion) + 1;
+
+  	}
+
   	function _checkEmptyAnswer(){
 
   		var arrAns = [];
@@ -586,7 +586,6 @@ angular.module('creativeRecruitmentApp')
 		if($scope.workQuestions.length == 1) {
 			alert('teraz odpowiadasz na ostatnie pytanie');
 			$scope.hideNext = true;
-			console.log($scope.workQuestions, 'workQuestions');
 		}
 
 	}
@@ -643,7 +642,6 @@ angular.module('creativeRecruitmentApp')
 		});
 
 		$rootScope.resultToSend = resultToSend;
-		console.log(resultToSend);
 
 		$location.path('/profiler/start');
 
@@ -660,7 +658,6 @@ angular.module('creativeRecruitmentApp')
 		$rootScope.resultToSend.user.isInterpreted = false;
 		$rootScope.resultToSend.user.isAnswerd = true;
 
-		console.log($rootScope.resultToSend);
 
 		$http.post('/api/profiler', $rootScope.resultToSend).
 		  success(function(data, status, headers, config) {
@@ -700,9 +697,6 @@ angular.module('creativeRecruitmentApp')
 		removeItemFromArr($scope.workQuestions, currentID);
 
 		$scope.actualQuestion = $scope.workQuestions[0].id;
-
-		console.log($scope.workQuestions, 'new work without erlier question');
-		console.log($rootScope.questions);
 
 		$('.questions-wrapper').css('opacity', 0);
 		setTimeout(function(){

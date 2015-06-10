@@ -30,12 +30,14 @@ Thing.find({}).remove(function() {
   });
 });
 
-User.find({}).remove(function() {
+
+/*User.find({}).remove(function() {
   User.create({
     provider: 'local',
-    name: 'Test User',
-    email: 'test@test.com',
-    password: 'test'
+    role: 'admin',
+    name: 'Paweł Wójcik',
+    email: 'pwojcik@profiler.pl',
+    password: 'profiler'
   }, {
     provider: 'local',
     role: 'admin',
@@ -47,3 +49,4 @@ User.find({}).remove(function() {
     }
   );
 });
+*/
