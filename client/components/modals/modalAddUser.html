@@ -41,7 +41,7 @@
                   ng-model="user.client"
                   name="company"
                   required="true">
-                  <option ng-repeat="company in companyUsers track by company.name" name="company.name" value="{{company._id}}">{{company.name}}</option>
+                  <option ng-repeat="company in companyUsers track by $index" name="company.name" value="{{company._id}}">{{company.name}}</option>
                 </select>
 
             </div>
